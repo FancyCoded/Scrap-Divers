@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f516da567ddc594088864db1a793136, type: 3}
+  m_Name: Second level
+  m_EditorClassIdentifier: 
+  _level: 2
+  _levelStartPositionZ: 400
+  _levelLenght: 600
+  _minObstacleSpace: 20
+  _maxObstacleSpace: 35
+  _obstacleCountPerFrame: 3
+  _frame: {fileID: 5093755078874949923, guid: 8e919eee22e98304ebf908db7ba7b9eb, type: 3}
+  _obstacles:
+  - {fileID: 1703093653637678911, guid: cc2e20506569f774ea3cb1bd58479890, type: 3}
+  - {fileID: 3439433553004926393, guid: b15e8d2d1e17045448c15ce5144b252f, type: 3}
+  - {fileID: 370160100787991324, guid: 293bd88220f599c42aba267209781cba, type: 3}
+  - {fileID: 4906926044847186112, guid: 6a41be23e715bc64c8ac7096296668f9, type: 3}
+  - {fileID: 5360850446901536881, guid: ddbf0706c56fc1f46902861d5ed81f92, type: 3}
+  - {fileID: 2412665257928005204, guid: 51920d2b237bd1a4c9503478a13ccfa7, type: 3}
+  - {fileID: 1294439026239130, guid: c95066f02b47a5a4593e759dc7a30ac5, type: 3}
+  - {fileID: 3721949900776456930, guid: 333e8aa234d63394387e1ebbad4499a3, type: 3}
+  - {fileID: 7473000838691993634, guid: 65df40f14e276b644b338290a2ae09aa, type: 3}
+  - {fileID: 4454068953443162561, guid: dcc0fddd90bbc9f45a69e070dbf7d7dd, type: 3}
+  - {fileID: 6556088407052522203, guid: 17237f1975b22754ab813a30afc2d619, type: 3}
+  - {fileID: 4577627930781266966, guid: b92fdd8ec4164f84e9cbca1b058ed847, type: 3}
