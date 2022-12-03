@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ObstacleSpawner : ObstaclePool, IResetable
 {
     [SerializeField] private ItemSpawner _itemSpawner;
+    [SerializeField] private float _buffSpawnChanceMax;
 
     private List<Obstacle> _spawnedObstacles = new List<Obstacle>();
 
@@ -11,11 +14,7 @@ public class ObstacleSpawner : ObstaclePool, IResetable
     private uint _minNutInRow = 1;
     private int _nutSpace = 2;
 
-    private uint _magnetPerSpawnNumber = 4;
-    private uint _wrenchPerSpawnNumber = 3;
-    private uint _featherPerSpawnNumber = 3;
-    private uint _starPerSpawnNumber = 3;
-    private uint _itemSpawnedCounter = 0;
+    private float _buffSpawnChance;
 
     public override void Init(LevelProperites levelProperites)
     {
@@ -47,10 +46,7 @@ public class ObstacleSpawner : ObstaclePool, IResetable
         uint maxItemSpawnChance = 100;
 
         if (obstacle.ItemSpawnPoints.Count > 0 && obstacle.ItemSpawnChance >= Random.Range(minItemSpawnChance, maxItemSpawnChance))
-        {
-            _itemSpawnedCounter++;
             SpawnItemFor(obstacle);
-        }
     }
 
     public void TryDeleteFirst(uint initialFrameCount, uint obstacleCountPerFrame)
@@ -70,17 +66,19 @@ public class ObstacleSpawner : ObstaclePool, IResetable
     {
         int radnomIndex = Random.Range(0, obstacle.ItemSpawnPoints.Count);
         Transform point = obstacle.ItemSpawnPoints[radnomIndex].transform;
+        _buffSpawnChance = Random.Range(0, _buffSpawnChanceMax);
 
-        if (_itemSpawnedCounter % _magnetPerSpawnNumber == 0)
-            SpawnItem(ItemType.Magnet, point);
-        else if (_itemSpawnedCounter % _wrenchPerSpawnNumber == 0)
-            SpawnItem(ItemType.Wrench, point);
+        if(_buffSpawnChance >= Random.Range(0, 100))
+            SpawnRandomBuff(point);
         else
             SpawnNuts(point);
     }
 
-    private void SpawnItem(ItemType itemType, Transform point)
+    private void SpawnRandomBuff(Transform point)
     {
+        int length = Enum.GetValues(typeof(ItemType)).Length;
+        ItemType itemType = (ItemType)Random.Range(1, length - 1);
+
         _itemSpawner.Spawn(itemType, point, point.position);
     }
 
@@ -94,19 +92,13 @@ public class ObstacleSpawner : ObstaclePool, IResetable
             Vector3 nutPosition;
 
             if (i == 0)
-            {
                 nutPosition = point.position;
-                lastNutPosition = nutPosition;
-
-                _itemSpawner.Spawn(ItemType.Nut, point, nutPosition);
-            }
             else
-            {
                 nutPosition = new Vector3(lastNutPosition.x, lastNutPosition.y, lastNutPosition.z + _nutSpace);
-                lastNutPosition = nutPosition;
+                
+            lastNutPosition = nutPosition;
 
-                _itemSpawner.Spawn(ItemType.Nut, point, nutPosition);
-            }
+            _itemSpawner.Spawn(ItemType.Nut, point, nutPosition);
         }
     }
 

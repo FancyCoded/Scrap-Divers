@@ -67,7 +67,7 @@ public class Storage
 
         PlayerPrefs.SetString(CheckPointsKey, output);
         PlayerPrefs.SetInt(NutCountKey, 10000);
-        PlayerPrefs.SetInt(BestDistanceKey, 400);
+        PlayerPrefs.SetInt(BestDistanceKey, 10000);
         PlayerPrefs.SetInt(BestCollectedNutsKey, 0);
     }
 

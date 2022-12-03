@@ -56,9 +56,7 @@ public class MenuStorageComposition : MonoBehaviour, IResetable
     [ContextMenu("Reset Load")]
     public void ResetLoad()
     {
-        _checkPointMapView.ResetState();
-        _checkPointMap.ResetState();
-        _storage.ResetState();
+        ResetState();
         _storage.Load();
     }
 
@@ -71,6 +69,8 @@ public class MenuStorageComposition : MonoBehaviour, IResetable
     [ContextMenu("TestMode")]
     public void TestMode()
     {
+        ResetState();
         _storage.TestMode();
+        _storage.Load();
     }
 }

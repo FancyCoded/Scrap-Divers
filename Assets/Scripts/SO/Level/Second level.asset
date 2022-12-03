@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Second level
   m_EditorClassIdentifier: 
   _level: 2
-  _levelStartPositionZ: 400
-  _levelLenght: 600
+  _levelStartPositionZ: 1000
+  _levelLenght: 1500
   _minObstacleSpace: 20
   _maxObstacleSpace: 35
   _obstacleCountPerFrame: 3

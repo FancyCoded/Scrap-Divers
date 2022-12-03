@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FirstCheckPoint
   m_EditorClassIdentifier: 
   _level: 1
-  _distance: 200
+  _distance: 400
   _price: 200
   _isBought: 0
   _isChecked: 0
