@@ -631,7 +631,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5293387, y: 0.19732496}
   m_AnchorMax: {x: 0.943178, y: 0.84245}
-  m_AnchoredPosition: {x: -1.1700134, y: -1.5200119}
+  m_AnchoredPosition: {x: -1.1700134, y: -1.5200195}
   m_SizeDelta: {x: -2.1800003, y: 1.7399979}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &214251705
@@ -5263,7 +5263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.062145025, y: 0.88259983}
   m_AnchorMax: {x: 0.31414503, y: 0.97451997}
-  m_AnchoredPosition: {x: -2.380127, y: -2.0302734}
+  m_AnchoredPosition: {x: -2.380188, y: -2.0302734}
   m_SizeDelta: {x: 1.1900024, y: 1.3100586}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1707786140
@@ -5317,7 +5317,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.2414283, y: 0.32242855}
   m_AnchorMax: {x: 0.77055544, y: 0.4074282}
-  m_AnchoredPosition: {x: -6.499878, y: -4.5}
+  m_AnchoredPosition: {x: -6.4998474, y: -4.5}
   m_SizeDelta: {x: 4.409973, y: 8.960007}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1722986283
@@ -5851,7 +5851,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1139367744188330768, guid: a9e6d99f6e53a0240abc0be617327610, type: 3}
       propertyPath: _duration
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1499457457838985926, guid: a9e6d99f6e53a0240abc0be617327610, type: 3}
       propertyPath: m_Name
@@ -6800,6 +6800,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 7990201740034073319, guid: 6a4d462dffaa37d4fb30decf310e78a4, type: 3}
+      propertyPath: m_Name
+      value: Model
+      objectReference: {fileID: 0}
     - target: {fileID: 8097115014531732632, guid: 6a4d462dffaa37d4fb30decf310e78a4, type: 3}
       propertyPath: _level
       value: 
@@ -6830,7 +6834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8097115014531732632, guid: 6a4d462dffaa37d4fb30decf310e78a4, type: 3}
       propertyPath: _lerpMaxDelta
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8097115014531732632, guid: 6a4d462dffaa37d4fb30decf310e78a4, type: 3}
       propertyPath: _velocitySpeed

@@ -16,8 +16,8 @@ public class LevelProperites : ScriptableObject
     LevelConfig _levelConfig = new LevelConfig();
 
     public uint Level => _level;
-    public uint LevelLength => _levelLenght * _levelConfig.LevelMeterFactor;
     public uint LevelStartPositionZ => _levelStartPositionZ * _levelConfig.LevelMeterFactor;
+    public uint LevelLength => LevelStartPositionZ + _levelLenght * _levelConfig.LevelMeterFactor;
     public float MinObstacleSpace => _minObstacleSpace;
     public float MaxObstacleSpace => _maxObstacleSpace;
     public uint ObstacleCountPerFrame => _obstacleCountPerFrame;

@@ -67,4 +67,10 @@ public class MenuStorageComposition : MonoBehaviour, IResetable
     {
         _storage.Save();
     }
+
+    [ContextMenu("TestMode")]
+    public void TestMode()
+    {
+        _storage.TestMode();
+    }
 }

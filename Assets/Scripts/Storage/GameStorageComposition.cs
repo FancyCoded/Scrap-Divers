@@ -74,7 +74,7 @@ public class GameStorageComposition : MonoBehaviour
     {
         _level.Init(level, startPosition);
         _robotMovement.Init(_level.CurrentLevelProperties, startPosition);
-        _score.Init(_level.CurrentLevelProperties.LevelLength, startPosition);
+        _score.Init(_level.CurrentLevelProperties.LevelLength, startPosition, _level.IsLastLevel);
         _scoreView.Init(_score);
         _result.Init(_score, _wallet);
     }

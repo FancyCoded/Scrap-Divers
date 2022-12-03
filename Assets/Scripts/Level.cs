@@ -12,9 +12,10 @@ public class Level : MonoBehaviour
     [SerializeField] private LevelProperites[] _levelProperites;
 
     private LevelProperites _currentLevelProperties;
-    private uint _level = 1;
+    private uint _currentLevel = 1;
     private bool _isLevelAllFrameSpawned;
 
+    public bool IsLastLevel => _currentLevel == LevelCount;
     public int LevelCount => _levelProperites.Length;
     public LevelProperites CurrentLevelProperties => _currentLevelProperties;
 
@@ -22,11 +23,11 @@ public class Level : MonoBehaviour
 
     public void Init(uint level, uint startPosition)
     {
-        _level = level;
+        _currentLevel = level;
 
         for(int i = 0; i < _levelProperites.Length; i++)
         {
-            if (_level != _levelProperites[i].Level)
+            if (_currentLevel != _levelProperites[i].Level)
                 continue;
 
             _currentLevelProperties = _levelProperites[i];
@@ -42,7 +43,7 @@ public class Level : MonoBehaviour
 
     public void FrameSpawnTriggerReached()
     {
-        if (_frameSpawner.LastFramePosition.z >= _currentLevelProperties.LevelStartPositionZ + _currentLevelProperties.LevelLength && _level < LevelCount)
+        if (_frameSpawner.LastFramePosition.z >= _currentLevelProperties.LevelLength && _currentLevel < LevelCount)
         {
             _isLevelAllFrameSpawned = true;
             _portal.Init();
@@ -65,16 +66,19 @@ public class Level : MonoBehaviour
 
     public void TurnNextLevel()
     {
-        _level++;
+        _currentLevel++;
 
         for(int i = 0; i < _levelProperites.Length; i++)
         {
-            if (_levelProperites[i].Level == _level)
+            if (_levelProperites[i].Level == _currentLevel)
+            {
                 _currentLevelProperties = _levelProperites[i];
+                break;
+            }
         }
 
         _isLevelAllFrameSpawned = false;
-        _level = _currentLevelProperties.Level;
+        _currentLevel = _currentLevelProperties.Level;
 
         LevelChanged?.Invoke(_currentLevelProperties);
     }

@@ -57,6 +57,16 @@ public class Storage
 
         PlayerPrefs.SetString(CheckPointsKey, output);
         PlayerPrefs.SetInt(NutCountKey, 0);
+        PlayerPrefs.SetInt(BestDistanceKey, 0);
+        PlayerPrefs.SetInt(BestCollectedNutsKey, 0);
+    }
+
+    public void TestMode()
+    {
+        string output = JsonConvert.SerializeObject(_checkPointPropertiesDefault);
+
+        PlayerPrefs.SetString(CheckPointsKey, output);
+        PlayerPrefs.SetInt(NutCountKey, 10000);
         PlayerPrefs.SetInt(BestDistanceKey, 400);
         PlayerPrefs.SetInt(BestCollectedNutsKey, 0);
     }
