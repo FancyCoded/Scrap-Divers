@@ -17,8 +17,14 @@ public class GameStorageComposition : MonoBehaviour
     private readonly CheckPointMap _checkPointMap = new CheckPointMap();
     private readonly Score _score = new Score();
     LevelConfig _levelConfig = new LevelConfig();
+    PlayerInputRouter _input;
 
     public Storage Storage => _storage;
+
+    private void Awake()
+    {
+        _input = new PlayerInputRouter();
+    }
 
     private void OnEnable()
     {
@@ -32,6 +38,8 @@ public class GameStorageComposition : MonoBehaviour
         _robot.Revived += _score.Record;
         _robotMovement.SpeedChanged += _score.OnSpeedChanged;
         _collector.NutCountChanged += _score.OnNutCountChanged;
+
+        _input.Enable();
     }
 
     private void OnDisable()
@@ -46,6 +54,8 @@ public class GameStorageComposition : MonoBehaviour
         _robot.Revived -= _score.Record;
         _robotMovement.SpeedChanged -= _score.OnSpeedChanged;
         _collector.NutCountChanged -= _score.OnNutCountChanged;
+
+        _input.Disable();
     }
 
     private void Start()
@@ -57,23 +67,25 @@ public class GameStorageComposition : MonoBehaviour
         uint startPosition = Storage.CheckPointMap.CurrentCheckPointProperty.Distance * _levelConfig.LevelMeterFactor;
         uint level = Storage.CheckPointMap.CurrentCheckPointProperty.Level;
 
-        InitLevel(level, startPosition);
+        InitLevel(level, startPosition, _input);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        _input.Update();        
         _score.Update(Time.deltaTime);
     }
 
     private void OnLevelChanged(LevelProperites levelProperties)
     {
-        InitLevel(levelProperties.Level, levelProperties.LevelStartPositionZ);
+        InitLevel(levelProperties.Level, levelProperties.LevelStartPositionZ, _input);
     }
 
-    private void InitLevel(uint level, uint startPosition)
+    private void InitLevel(uint level, uint startPosition, PlayerInputRouter input)
     {
+        _input = input;
         _level.Init(level, startPosition);
-        _robotMovement.Init(_level.CurrentLevelProperties, startPosition);
+        _robotMovement.Init(_level.CurrentLevelProperties, startPosition, _input);
         _score.Init(_level.CurrentLevelProperties.LevelLength, startPosition, _level.IsLastLevel);
         _scoreView.Init(_score);
         _result.Init(_score, _wallet);

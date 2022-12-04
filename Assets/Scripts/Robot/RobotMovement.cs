@@ -4,9 +4,6 @@ using UnityEngine.Events;
 
 public class RobotMovement : MonoBehaviour, IResetable
 {
-    private const string Vertical = "Vertical";
-    private const string Horizontal = "Horizontal";
-
     [SerializeField] private float _maxSpeed = 35;
     [SerializeField] private float _velocitySpeed;
     [SerializeField] private float _speed;
@@ -25,9 +22,8 @@ public class RobotMovement : MonoBehaviour, IResetable
     private bool _canMove = true;
     private bool _recordVelocity = true;
 
-    private float _vertical;
-    private float _horizontal;
     private LevelProperites _levelProperites;
+    private PlayerInputRouter _input;
 
     public float Speed => _speed;
 
@@ -69,10 +65,11 @@ public class RobotMovement : MonoBehaviour, IResetable
         StartCoroutine(_changeSpeed);
     }
 
-    public void Init(LevelProperites levelProperites, uint startPositionZ)
+    public void Init(LevelProperites levelProperites, uint startPositionZ, PlayerInputRouter input)
     {
         ResetState();
 
+        _input = input;
         _levelProperites = levelProperites;
         transform.position = new Vector3(transform.position.x, transform.position.y, startPositionZ);
         _startPosition = _rigidbody.transform.position;
@@ -84,6 +81,19 @@ public class RobotMovement : MonoBehaviour, IResetable
         _recordVelocity = true;
 
         _levelProperites = null;
+        _input = null;
+    }
+
+    public IEnumerator SetSpeedSmooth()
+    {
+        _speed = 0;
+
+        while (_speed != _maxSpeed)
+        {
+            _speed = Mathf.MoveTowards(_speed, _maxSpeed, _lerpMaxDelta);
+            SpeedChanged?.Invoke(_speed);
+            yield return null;
+        }
     }
 
     private void OnPortalReached()
@@ -95,33 +105,18 @@ public class RobotMovement : MonoBehaviour, IResetable
     }
 
     private void Move()
-    {
-        _vertical = Input.GetAxis(Vertical);
-        _horizontal = Input.GetAxis(Horizontal);
-
+    {   
         _targetPosition = transform.position + Vector3.forward;
         transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed * Time.deltaTime);
 
         if (_recordVelocity == false)
             return;
 
-        _rigidbody.velocity = new Vector3(_horizontal * _velocitySpeed, _vertical * _velocitySpeed);
+        _rigidbody.velocity = new Vector3(_input.Movement.x * _velocitySpeed, _input.Movement.y * _velocitySpeed);
         _rigidbody.transform.position = new Vector3(
             Mathf.Clamp(_rigidbody.transform.position.x, _horizontalPositionRange.x, _horizontalPositionRange.y),
             Mathf.Clamp(_rigidbody.transform.position.y, _verticalPositionRange.x, _verticalPositionRange.y), 
             transform.position.z);
-    }
-
-    private IEnumerator SetSpeedSmooth()
-    {
-        _speed = 0;
-
-        while (_speed != _maxSpeed)
-        {
-            _speed = Mathf.MoveTowards(_speed, _maxSpeed, _lerpMaxDelta);
-            SpeedChanged?.Invoke(_speed);
-            yield return null;
-        }
     }
 
     private IEnumerator SetSpeedFor(float duration, float targetSpeed)

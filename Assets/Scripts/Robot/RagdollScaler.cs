@@ -33,6 +33,15 @@ public class RagdollScaler : MonoBehaviour
         StartCoroutine(_scale);
     }
 
+    public void CorrectCharacterJoints()
+    {
+        for (int i = 0; i < _characterJoints.Length; i++)
+        {
+            _characterJoints[i].connectedAnchor = _connectedAnchor[i];
+            _characterJoints[i].anchor = _anchor[i];
+        }
+    }
+
     private IEnumerator Scale(float scale, float duration)
     {
         Vector3 defaultScale = transform.localScale;
@@ -54,15 +63,6 @@ public class RagdollScaler : MonoBehaviour
             transform.localScale = Vector3.MoveTowards(transform.localScale, defaultScale, _maxDelta / 2);
             CorrectCharacterJoints();
             yield return null;
-        }
-    }
-
-    private void CorrectCharacterJoints()
-    {
-        for (int i = 0; i < _characterJoints.Length; i++)
-        {
-            _characterJoints[i].connectedAnchor = _connectedAnchor[i];
-            _characterJoints[i].anchor = _anchor[i];
         }
     }
 }

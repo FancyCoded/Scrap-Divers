@@ -4,6 +4,8 @@ using UnityEngine.Events;
 public class Robot : MonoBehaviour
 {
     [SerializeField] private Body _body;
+    [SerializeField] private RagdollScaler _ragdollScaler;
+    [SerializeField] private RobotMovement _robotMovement;
 
     public Body Body => _body;
 
@@ -29,8 +31,10 @@ public class Robot : MonoBehaviour
         int positionOffsetZ = 2;
 
         _body.Repair();
+        _ragdollScaler.CorrectCharacterJoints();
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + positionOffsetZ);
         gameObject.SetActive(true);
+        StartCoroutine(_robotMovement.SetSpeedSmooth());
         Revived?.Invoke();
     }
 }
