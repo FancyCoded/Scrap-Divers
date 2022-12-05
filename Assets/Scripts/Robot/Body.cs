@@ -19,7 +19,7 @@ public class Body : MonoBehaviour, IRepairable
         {
             _parts[i].Damaged += OnPartDamaged;
             _parts[i].Destructed += OnPartDestructed;
-        }
+        }        
     }
     
     public void Repair()
@@ -30,6 +30,8 @@ public class Body : MonoBehaviour, IRepairable
             _parts[i].Destructed += OnPartDestructed;
             _parts[i].Damaged += OnPartDamaged;
         }
+
+        StartCoroutine(_robotMovement.SetDefaultSpeedSmooth());
     }
 
     private void OnRobotStopped()
@@ -61,5 +63,7 @@ public class Body : MonoBehaviour, IRepairable
     {
         if (part.PartType == PartType.Trunk)
             Die();
+
+        _robotMovement.IncreaseSpeedAndVelocity();
     }
 }

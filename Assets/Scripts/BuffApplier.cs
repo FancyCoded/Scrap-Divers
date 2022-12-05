@@ -16,6 +16,13 @@ public class BuffApplier : MonoBehaviour
         if(item is Star star)
             _ragdollScaler.ChangeScaleFor(star.Duration, star.TargetScale);
         if (item is Feather feather)
-            _robotMovement.ChangeSpeedFor(feather.Duration, feather.TargetSpeed);
+            _robotMovement.ReduceSpeedFor(feather.Duration, feather.SpeedDecrement);
+    }
+
+    public void ResetState()
+    {
+        _body.Repair();
+        _ragdollScaler.ResetState();
+        _magnetField.ResetState();
     }
 }

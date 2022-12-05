@@ -10,7 +10,7 @@ public class PlayerInputRouter
     private bool _isTouchScreen = false;
     private Vector2 _startPosition = Vector2.zero;
 
-    public int TouchScreenSize { get; private set; } = 150;
+    public int TouchScreenSize => 150;
 
     public PlayerInputRouter()
     {

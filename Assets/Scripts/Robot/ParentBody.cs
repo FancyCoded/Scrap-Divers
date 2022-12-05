@@ -23,7 +23,16 @@ public class ParentBody : Part
     public override void Destruct()
     {
         base.Destruct();
-        _childPart.Destruct();
+
+        if (_childPart.IsDesturcted == false)
+            _childPart.Destruct();
+
+        _electricEffect.Stop();
+    }
+
+    public override void Repair()
+    {
+        base.Repair();
         _electricEffect.Stop();
     }
 }

@@ -30,9 +30,15 @@ public class Collector : MonoBehaviour
         transform.position = _rigidbody.transform.position;
         Vector3 boxHalfSize = _boxCollider.size / 2;
 
-        if (Physics.BoxCast(transform.position, boxHalfSize, Vector3.forward, out _hit, Quaternion.identity, _boxCastDistance))
+        if (Physics.BoxCast(_boxCollider.bounds.center, boxHalfSize, Vector3.forward, out _hit, Quaternion.identity, _boxCastDistance))
             if (_hit.collider.TryGetComponent(out Item item))
                 Collect(item);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.TryGetComponent(out Item item))
+            Collect(item);
     }
 
     private void Collect(Item item)

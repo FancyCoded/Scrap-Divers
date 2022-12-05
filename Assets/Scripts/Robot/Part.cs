@@ -25,6 +25,7 @@ public class Part : MonoBehaviour, IDamageable, IRepairable
     public PartType PartType => _partType;
     public AudioClip HitSound => _hitSound;
     public Rigidbody Rigidbody => _rigidbody;
+    public bool IsDesturcted => enabled == false;
 
     public event UnityAction<Part> Destructed;
     public event UnityAction<Part> Damaged;
@@ -64,7 +65,7 @@ public class Part : MonoBehaviour, IDamageable, IRepairable
             Destruct();
     }
 
-    public void Repair()
+    public virtual void Repair()
     {
         _health = _maxHealth;
         _mesh.gameObject.SetActive(true);
@@ -72,8 +73,6 @@ public class Part : MonoBehaviour, IDamageable, IRepairable
 
         if (_brokenEffect)
             _brokenEffect.Stop();
-
-        //_rigidbody = _rigidbodyStartState;
     }
 
     public virtual void Destruct()

@@ -3,16 +3,19 @@ using UnityEngine;
 
 public class RagdollScaler : MonoBehaviour
 {
-    [SerializeField] float _maxDelta = 0.1f;
+    [SerializeField] private float _maxDeltaOfGrowth = 0.1f;
+    [SerializeField] private float _maxDeltaOfDecline = 0.01f;
 
     private CharacterJoint[] _characterJoints;
     private Vector3[] _connectedAnchor;
     private Vector3[] _anchor;
+    private Vector3 _defaultScale;
 
     private IEnumerator _scale;
 
     private void Awake()
     {
+        _defaultScale = transform.localScale;
         _characterJoints = GetComponentsInChildren<CharacterJoint>();
         _connectedAnchor = new Vector3[_characterJoints.Length];
         _anchor = new Vector3[_characterJoints.Length];
@@ -42,25 +45,32 @@ public class RagdollScaler : MonoBehaviour
         }
     }
 
+    public void ResetState()
+    {
+        if(_scale != null)
+            StopCoroutine(_scale);
+
+        transform.localScale = _defaultScale;
+        CorrectCharacterJoints();
+    }
+
     private IEnumerator Scale(float scale, float duration)
     {
-        Vector3 defaultScale = transform.localScale;
         Vector3 targetScale = new Vector3(scale, scale, scale);
         WaitForSeconds seconds = new WaitForSeconds(duration);
 
         while(transform.localScale != targetScale)
         {
-            transform.localScale = Vector3.MoveTowards(transform.localScale, targetScale, _maxDelta);
+            transform.localScale = Vector3.MoveTowards(transform.localScale, targetScale, _maxDeltaOfGrowth);
             CorrectCharacterJoints();
             yield return null;
         }
 
-
         yield return seconds;
 
-        while (transform.localScale != defaultScale)
+        while (transform.localScale != _defaultScale)
         {
-            transform.localScale = Vector3.MoveTowards(transform.localScale, defaultScale, _maxDelta / 2);
+            transform.localScale = Vector3.MoveTowards(transform.localScale, _defaultScale, _maxDeltaOfDecline);
             CorrectCharacterJoints();
             yield return null;
         }

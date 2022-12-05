@@ -17,7 +17,7 @@ public class Item : MonoBehaviour
     {
         gameObject.SetActive(false);
 
-        transform.parent = _itemSpawner.transform;
-        transform.position = _itemSpawner.transform.position;
+        //transform.parent = _itemSpawner.transform;
+        //transform.position = _itemSpawner.transform.position;
     }
 }

@@ -16,6 +16,16 @@ public class NutCountView : MonoBehaviour
         _collector.NutCountChanged -= OnCountChanged;
     }
 
+    public void Display()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void OnCountChanged(uint count)
     {
         _count.text = count.ToString();

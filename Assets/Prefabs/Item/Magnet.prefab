@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 1
-  _duration: 10
+  _duration: 15
 --- !u!1 &7011295881458176818
 GameObject:
   m_ObjectHideFlags: 0

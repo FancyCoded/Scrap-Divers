@@ -77,7 +77,7 @@ public class ObstacleSpawner : ObstaclePool, IResetable
     private void SpawnRandomBuff(Transform point)
     {
         int length = Enum.GetValues(typeof(ItemType)).Length;
-        ItemType itemType = (ItemType)Random.Range(1, length - 1);
+        ItemType itemType = (ItemType)Random.Range(1, length);
 
         _itemSpawner.Spawn(itemType, point, point.position);
     }

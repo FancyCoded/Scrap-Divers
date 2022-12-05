@@ -4,9 +4,10 @@ using UnityEngine.Events;
 
 public class RobotMovement : MonoBehaviour, IResetable
 {
-    [SerializeField] private float _maxSpeed = 35;
-    [SerializeField] private float _velocitySpeed;
+    [SerializeField] private float _defaultSpeed = 30;
+    [SerializeField] private float _defaultVelocitySpeed = 5;
     [SerializeField] private float _speed;
+    [SerializeField] private float _velocitySpeed;
     [SerializeField] private float _lerpMaxDelta;
     [SerializeField] private float _rayCastDistance;
     [SerializeField] private Rigidbody _rigidbody;
@@ -17,7 +18,7 @@ public class RobotMovement : MonoBehaviour, IResetable
     private Vector2 _horizontalPositionRange = new Vector2(-3.5f, -0.5f);
     private Vector2 _verticalPositionRange = new Vector2(-1.5f, 1.5f);
     private Vector2 _startPosition;
-    private IEnumerator _changeSpeed;
+    private IEnumerator _reduceSpeed;
 
     private bool _canMove = true;
     private bool _recordVelocity = true;
@@ -37,7 +38,7 @@ public class RobotMovement : MonoBehaviour, IResetable
 
     private void Start()
     {
-        StartCoroutine(SetSpeedSmooth());
+        StartCoroutine(SetDefaultSpeedSmooth());
     }
 
     private void FixedUpdate()
@@ -56,13 +57,13 @@ public class RobotMovement : MonoBehaviour, IResetable
         }
     }
 
-    public void ChangeSpeedFor(float duration, float speed)
+    public void ReduceSpeedFor(float duration, float speedDecrement)
     {
-        if (_changeSpeed != null)
-            StopCoroutine(_changeSpeed);
+        if (_reduceSpeed != null)
+            StopCoroutine(_reduceSpeed);
 
-        _changeSpeed = SetSpeedFor(duration, speed);
-        StartCoroutine(_changeSpeed);
+        _reduceSpeed = ReduceSpeed(duration, speedDecrement);
+        StartCoroutine(_reduceSpeed);
     }
 
     public void Init(LevelProperites levelProperites, uint startPositionZ, PlayerInputRouter input)
@@ -84,13 +85,27 @@ public class RobotMovement : MonoBehaviour, IResetable
         _input = null;
     }
 
-    public IEnumerator SetSpeedSmooth()
+    public void IncreaseSpeedAndVelocity()
     {
+        float speedIncrement = 0.5f;
+        float velocityIncrement = 0.5f;
+        _velocitySpeed += velocityIncrement;
+        _speed += speedIncrement;
+        SpeedChanged?.Invoke(_speed);
+    }
+
+    public IEnumerator SetDefaultSpeedSmooth()
+    {
+        _velocitySpeed = _defaultVelocitySpeed;
+
+        if (_reduceSpeed != null)
+            yield break;
+
         _speed = 0;
 
-        while (_speed != _maxSpeed)
+        while (_speed != _defaultSpeed)
         {
-            _speed = Mathf.MoveTowards(_speed, _maxSpeed, _lerpMaxDelta);
+            _speed = Mathf.MoveTowards(_speed, _defaultSpeed, _lerpMaxDelta);
             SpeedChanged?.Invoke(_speed);
             yield return null;
         }
@@ -119,10 +134,10 @@ public class RobotMovement : MonoBehaviour, IResetable
             transform.position.z);
     }
 
-    private IEnumerator SetSpeedFor(float duration, float targetSpeed)
+    private IEnumerator ReduceSpeed(float duration, float speedDecrement)
     {
-        float lastSpeed = _speed;
         WaitForSeconds seconds = new WaitForSeconds(duration);
+        float targetSpeed = _speed - speedDecrement;
 
         while(_speed != targetSpeed)
         {
@@ -134,12 +149,15 @@ public class RobotMovement : MonoBehaviour, IResetable
 
         yield return seconds;
 
-        while (_speed != lastSpeed)
+        targetSpeed = _speed + speedDecrement;
+
+        while (_speed != targetSpeed)
         {
-            _speed = Mathf.MoveTowards(_speed, lastSpeed, _lerpMaxDelta);
+            _speed = Mathf.MoveTowards(_speed, targetSpeed, _lerpMaxDelta);
             yield return null;
         }
 
         SpeedChanged?.Invoke(_speed);
+        _reduceSpeed = null;
     }
 }

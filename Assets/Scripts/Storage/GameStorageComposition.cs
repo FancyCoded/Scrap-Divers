@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStorageComposition : MonoBehaviour
+public class GameStorageComposition : StorageComposition, IResetable
 {
     [SerializeField] private List<CheckPointProperty> _checkPointPropertiesDefault;
     [SerializeField] private Level _level;
@@ -11,15 +11,13 @@ public class GameStorageComposition : MonoBehaviour
     [SerializeField] private RobotMovement _robotMovement;
     [SerializeField] private Collector _collector;
     [SerializeField] private ScoreView _scoreView;
-
-    private readonly Storage _storage = new Storage();
+    [SerializeField] private GeneralAudioActivityToggler _generalAudioActivityToggler;
+    
     private readonly Wallet _wallet = new Wallet(0);
     private readonly CheckPointMap _checkPointMap = new CheckPointMap();
     private readonly Score _score = new Score();
-    LevelConfig _levelConfig = new LevelConfig();
-    PlayerInputRouter _input;
-
-    public Storage Storage => _storage;
+    private readonly LevelConfig _levelConfig = new LevelConfig();
+    private PlayerInputRouter _input;
 
     private void Awake()
     {
@@ -60,20 +58,24 @@ public class GameStorageComposition : MonoBehaviour
 
     private void Start()
     {
-        _storage.Init(_wallet, _checkPointMap, _score, _checkPointPropertiesDefault);
-        _storage.Load();
-        Save();
+        Compose();
+    }
+
+    private void FixedUpdate()
+    {
+        _input.Update();        
+        _score.Update(Time.deltaTime);
+    }
+
+    public override void Compose()
+    {
+        Storage.Init(_wallet, _checkPointMap, _score, _checkPointPropertiesDefault, _generalAudioActivityToggler);
+        Storage.Load();
 
         uint startPosition = Storage.CheckPointMap.CurrentCheckPointProperty.Distance * _levelConfig.LevelMeterFactor;
         uint level = Storage.CheckPointMap.CurrentCheckPointProperty.Level;
 
         InitLevel(level, startPosition, _input);
-    }
-
-    private void Update()
-    {
-        _input.Update();        
-        _score.Update(Time.deltaTime);
     }
 
     private void OnLevelChanged(LevelProperites levelProperties)
@@ -88,18 +90,17 @@ public class GameStorageComposition : MonoBehaviour
         _robotMovement.Init(_level.CurrentLevelProperties, startPosition, _input);
         _score.Init(_level.CurrentLevelProperties.LevelLength, startPosition, _level.IsLastLevel);
         _scoreView.Init(_score);
-        _result.Init(_score, _wallet);
     }
 
     [ContextMenu("Save")]
     public void Save()
     {
-        _storage.Save();
+        Storage.Save();
     }
 
     [ContextMenu("Reset")]
     public void ResetState()
     {
-        _storage.ResetState();
+        Storage.ResetState();
     }
 }

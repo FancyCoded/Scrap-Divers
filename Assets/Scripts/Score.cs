@@ -27,11 +27,11 @@ public class Score
         if (_shouldRecord == false)
             return;
 
-        if (_position.z >= _levelLength && _isLastLevel == false)
-            OnLevelFinished();
-
         _targetPosition = _position + Vector3.forward;
         _position = Vector3.MoveTowards(_position, _targetPosition, _targetSpeed * deltaTime);
+
+        if (_position.z >= _levelLength && _isLastLevel == false)
+            OnLevelFinished();
     }
 
     public void Record()

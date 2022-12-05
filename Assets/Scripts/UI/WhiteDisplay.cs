@@ -6,6 +6,7 @@ public class WhiteDisplay : MonoBehaviour
 {
     [SerializeField] private Image _image;
     [SerializeField] private Portal _portal;
+    [SerializeField] private float _activeDuration = 0.5f;
 
     private void OnEnable()
     {
@@ -22,7 +23,7 @@ public class WhiteDisplay : MonoBehaviour
 
     private void SetActive()
     {
-        StartCoroutine(EnableFor(1));
+        StartCoroutine(EnableFor(_activeDuration));
     }
 
     private IEnumerator EnableFor(float duration)

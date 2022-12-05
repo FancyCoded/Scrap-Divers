@@ -16,6 +16,6 @@ public class Nut : Item
     public override void Pick()
     {
         base.Pick();
-        //_nutMovement.enabled = false;
+        _nutMovement.Disable();
     }
 }
