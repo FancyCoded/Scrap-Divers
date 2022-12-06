@@ -78,7 +78,7 @@ public class GameStorageComposition : StorageComposition, IResetable
         InitLevel(level, startPosition, _input);
     }
 
-    private void OnLevelChanged(LevelProperites levelProperties)
+    private void OnLevelChanged(LevelProperties levelProperties)
     {
         InitLevel(levelProperties.Level, levelProperties.LevelStartPositionZ, _input);
     }

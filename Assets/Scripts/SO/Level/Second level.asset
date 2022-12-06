@@ -18,6 +18,10 @@ MonoBehaviour:
   _minObstacleSpace: 20
   _maxObstacleSpace: 35
   _obstacleCountPerFrame: 3
+  _maxNutInRow: 3
+  _minNutInRow: 1
+  _nutSpace: 2
+  _buffSpawnChanceMax: 35
   _frame: {fileID: 5093755078874949923, guid: 8e919eee22e98304ebf908db7ba7b9eb, type: 3}
   _obstacles:
   - {fileID: 1703093653637678911, guid: cc2e20506569f774ea3cb1bd58479890, type: 3}

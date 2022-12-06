@@ -46,6 +46,7 @@ public class MoveableObstacle : MonoBehaviour, IResetable, IMoveable
 
         while (true)
         {
+
             while (transform.localPosition != targetPosition)
             {
                 transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, maxDelta);

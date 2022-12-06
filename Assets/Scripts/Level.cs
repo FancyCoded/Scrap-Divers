@@ -9,17 +9,17 @@ public class Level : MonoBehaviour
     [SerializeField] private uint _initialFramesCount;
     [SerializeField] private Portal _portal;
     [SerializeField] private RobotMovement _robotMovement;
-    [SerializeField] private LevelProperites[] _levelProperites;
+    [SerializeField] private LevelProperties[] _levelProperites;
 
-    private LevelProperites _currentLevelProperties;
+    private LevelProperties _currentLevelProperties;
     private uint _currentLevel = 1;
     private bool _isLevelAllFrameSpawned;
 
     public bool IsLastLevel => _currentLevel == LevelCount;
     public int LevelCount => _levelProperites.Length;
-    public LevelProperites CurrentLevelProperties => _currentLevelProperties;
+    public LevelProperties CurrentLevelProperties => _currentLevelProperties;
 
-    public event UnityAction<LevelProperites> LevelChanged;
+    public event UnityAction<LevelProperties> LevelChanged;
 
     public void Init(uint level, uint startPosition)
     {

@@ -26,7 +26,7 @@ public class ParentBody : Part
 
         if (_childPart.IsDesturcted == false)
             _childPart.Destruct();
-
+       
         _electricEffect.Stop();
     }
 

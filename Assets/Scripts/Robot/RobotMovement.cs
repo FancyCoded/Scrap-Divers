@@ -23,7 +23,7 @@ public class RobotMovement : MonoBehaviour, IResetable
     private bool _canMove = true;
     private bool _recordVelocity = true;
 
-    private LevelProperites _levelProperites;
+    private LevelProperties _levelProperites;
     private PlayerInputRouter _input;
 
     public float Speed => _speed;
@@ -66,7 +66,7 @@ public class RobotMovement : MonoBehaviour, IResetable
         StartCoroutine(_reduceSpeed);
     }
 
-    public void Init(LevelProperites levelProperites, uint startPositionZ, PlayerInputRouter input)
+    public void Init(LevelProperties levelProperites, uint startPositionZ, PlayerInputRouter input)
     {
         ResetState();
 

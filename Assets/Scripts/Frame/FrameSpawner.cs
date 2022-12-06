@@ -14,7 +14,7 @@ public class FrameSpawner : FramePool, IResetable
     public float LastFrameOriginZ => LastFramePosition.z - FrameCenter;
     public float LastFrameEndZ => LastFramePosition.z + FrameCenter;
 
-    public void Init(LevelProperites levelProperites, uint initialCount, uint spawnStartPositionZ)
+    public void Init(LevelProperties levelProperites, uint initialCount, uint spawnStartPositionZ)
     {
         ResetState();
 

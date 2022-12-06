@@ -8,9 +8,11 @@ public class ObstaclePool : MonoBehaviour, IResetable
     private List<Obstacle> _pool = new List<Obstacle>();
     private List<Obstacle> _disabledObstacles = new List<Obstacle>();
 
-    private LevelProperites _currentLevelProperties;
+    private LevelProperties _currentLevelProperties;
 
-    public virtual void Init(LevelProperites levelProperites)
+    public LevelProperties LevelProperties => _currentLevelProperties;
+
+    public virtual void Init(LevelProperties levelProperites)
     {
         _currentLevelProperties = levelProperites;
 

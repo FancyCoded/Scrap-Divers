@@ -6,17 +6,12 @@ using Random = UnityEngine.Random;
 public class ObstacleSpawner : ObstaclePool, IResetable
 {
     [SerializeField] private ItemSpawner _itemSpawner;
-    [SerializeField] private float _buffSpawnChanceMax;
 
     private List<Obstacle> _spawnedObstacles = new List<Obstacle>();
 
-    private uint _maxNutInRow = 4;
-    private uint _minNutInRow = 1;
-    private int _nutSpace = 2;
-
     private float _buffSpawnChance;
 
-    public override void Init(LevelProperites levelProperites)
+    public override void Init(LevelProperties levelProperites)
     {
         ResetState();
         base.Init(levelProperites);
@@ -66,7 +61,7 @@ public class ObstacleSpawner : ObstaclePool, IResetable
     {
         int radnomIndex = Random.Range(0, obstacle.ItemSpawnPoints.Count);
         Transform point = obstacle.ItemSpawnPoints[radnomIndex].transform;
-        _buffSpawnChance = Random.Range(0, _buffSpawnChanceMax);
+        _buffSpawnChance = Random.Range(0, LevelProperties.BuffSpawnChanceMax);
 
         if(_buffSpawnChance >= Random.Range(0, 100))
             SpawnRandomBuff(point);
@@ -84,7 +79,7 @@ public class ObstacleSpawner : ObstaclePool, IResetable
 
     private void SpawnNuts(Transform point)
     {
-        uint nutInRow = (uint)Random.Range(_minNutInRow, _maxNutInRow);
+        uint nutInRow = (uint)Random.Range(LevelProperties.MinNutInRow, LevelProperties.MaxNutInRow);
         Vector3 lastNutPosition = Vector3.zero;
 
         for (int i = 0; i < nutInRow; i++)
@@ -94,7 +89,7 @@ public class ObstacleSpawner : ObstaclePool, IResetable
             if (i == 0)
                 nutPosition = point.position;
             else
-                nutPosition = new Vector3(lastNutPosition.x, lastNutPosition.y, lastNutPosition.z + _nutSpace);
+                nutPosition = new Vector3(lastNutPosition.x, lastNutPosition.y, lastNutPosition.z + LevelProperties.NutSpace);
                 
             lastNutPosition = nutPosition;
 

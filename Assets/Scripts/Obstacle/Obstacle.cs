@@ -12,8 +12,8 @@ public class Obstacle : MonoBehaviour
 
     private void Awake()
     {
-        int minSpawnChance = 50;
-        int maxSpawnChance = 100;
+        int minSpawnChance = 20;
+        int maxSpawnChance = 60;
 
         _itemSpawnChance = Random.Range(minSpawnChance, maxSpawnChance);
     }

@@ -8,7 +8,7 @@ public class FramePool : MonoBehaviour
     private List<Frame> _pool = new List<Frame>();
     private Frame _currentLevelFrame;
 
-    public virtual void Init(LevelProperites levelProperites, uint initialCount)
+    public virtual void Init(LevelProperties levelProperites, uint initialCount)
     {
         _currentLevelFrame = levelProperites.Frame;
 

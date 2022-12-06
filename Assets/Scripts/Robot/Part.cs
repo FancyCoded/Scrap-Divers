@@ -73,6 +73,8 @@ public class Part : MonoBehaviour, IDamageable, IRepairable
 
         if (_brokenEffect)
             _brokenEffect.Stop();
+
+        _rigidbody = _rigidbodyStartState;
     }
 
     public virtual void Destruct()
