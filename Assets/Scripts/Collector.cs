@@ -51,8 +51,8 @@ public class Collector : MonoBehaviour
         }
         else
         {
-            _buffApplyer.Apply(item);
             _audioSource.PlayOneShot(_buffSound);
+            _buffApplyer.Apply(item);
         }
 
         item.Pick();

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class GeneralAudioActivityToggler : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class GeneralAudioActivityToggler : MonoBehaviour
     [SerializeField] private Button _toggle;
     [SerializeField] private StorageComposition _storageComposition;
 
-    public bool IsMuted => AudioListener.pause;
+    public bool IsMuted => AudioListener.volume == 0;
+
+    public event UnityAction<bool> Toggled;
 
     private void OnEnable()
     {
@@ -30,14 +33,16 @@ public class GeneralAudioActivityToggler : MonoBehaviour
 
     public void Play()
     {
-        AudioListener.pause = false;
+        AudioListener.volume = 1;
         _toggle.image.sprite = _volume;
+        Toggled?.Invoke(IsMuted);
     }
 
     public void Mute()
     {
-        AudioListener.pause = true;
+        AudioListener.volume = 0;
         _toggle.image.sprite = _mute;
+        Toggled?.Invoke(IsMuted);
     }
 
     private void OnToggleButtonClicked()

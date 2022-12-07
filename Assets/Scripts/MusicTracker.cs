@@ -40,7 +40,7 @@ public class MusicTracker : MonoBehaviour
 
     private void Play()
     {
-        if(_playClips != null)
+        if (_playClips != null)
             StopCoroutine(_playClips);
 
         _playClips = PlayClips(_clips);

@@ -615,7 +615,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9546cca4301d0cc4290210ed2aa4a6fb, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1838,6 +1838,8 @@ MonoBehaviour:
   _checkPointMap: {fileID: 1536641453}
   _checkPointMapView: {fileID: 1882801214}
   _storageComposition: {fileID: 5365841149514162516}
+  _audio: {fileID: 550521313}
+  _generalAudio: {fileID: 482562734}
 --- !u!225 &1635267771495313683
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -72,11 +72,11 @@ public class Revival : MonoBehaviour
 
     private void OnReviveButtonClicked()
     {
-        _scoreView.Display();
-        _nutCountView.Display();
-
         if(_wallet.NutCount < _revivePrice)
             return;
+
+        _scoreView.Display();
+        _nutCountView.Display();
 
         _wallet.Reduce(_revivePrice);
 
