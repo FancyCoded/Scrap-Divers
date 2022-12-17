@@ -18,7 +18,7 @@ MonoBehaviour:
   _minObstacleSpace: 20
   _maxObstacleSpace: 35
   _obstacleCountPerFrame: 3
-  _maxNutInRow: 3
+  _maxNutInRow: 4
   _minNutInRow: 1
   _nutSpace: 2
   _buffSpawnChanceMax: 35

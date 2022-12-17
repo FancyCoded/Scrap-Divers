@@ -10,7 +10,7 @@ public class Part : MonoBehaviour, IDamageable, IRepairable
     [SerializeField] private PartType _partType;
     [SerializeField] private ParticleSystem _brokenEffect;
     [SerializeField] private ParticleSystem _dustEffect;
-    [SerializeField] private float _colliderCastDistance = 0.1f;
+    [SerializeField] private float _colliderCastDistance = 1;
     [SerializeField] private AudioClip _hitSound;
 
     private Collider _collider;
@@ -54,11 +54,12 @@ public class Part : MonoBehaviour, IDamageable, IRepairable
         _health -= damage;
         Damaged?.Invoke(this);
 
-        _dustEffect.Play();
+        if(_dustEffect)
+            _dustEffect.Play();
 
         float halfHealth = _maxHealth / 2;
 
-        if (_health <= halfHealth)
+        if (_health <= halfHealth && _brokenEffect)
             _brokenEffect.Play();
 
         if (_health <= 0)

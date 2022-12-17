@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 4
-  _targetScale: 0.3
+  _targetScale: 0.5
   _duration: 15
 --- !u!65 &1662285193
 BoxCollider:

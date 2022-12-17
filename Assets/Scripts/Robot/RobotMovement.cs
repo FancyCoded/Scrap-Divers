@@ -34,6 +34,8 @@ public class RobotMovement : MonoBehaviour, IResetable
     private void OnEnable()
     {
         _portal.PortalReached += OnPortalReached;
+        _input = new PlayerInputRouter();
+        _input.Enable();
     }
 
     private void Start()
@@ -43,6 +45,7 @@ public class RobotMovement : MonoBehaviour, IResetable
 
     private void FixedUpdate()
     {
+        _input.Update();
         if (_canMove == false)
             return;
 

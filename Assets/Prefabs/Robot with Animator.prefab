@@ -2885,6 +2885,7 @@ MonoBehaviour:
   _electricEffect: {fileID: 5016806032552046514, guid: f5c36bb3c21eeda488a0debbb9e6963d, type: 3}
   _audioSource: {fileID: 0}
   _robotMovement: {fileID: 2069540922400299140}
+  _blackFog: {fileID: 0}
 --- !u!114 &7847178984348669510
 MonoBehaviour:
   m_ObjectHideFlags: 0
