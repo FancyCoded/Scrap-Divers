@@ -20,7 +20,7 @@ public class ScoreView : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_score.ShouldRecord)
+        if (_score != null && _score.ShouldRecord)
             _coveredDistance.text = _score.Distance.ToString("F0") + 'm';
     }
 

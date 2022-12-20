@@ -12,19 +12,29 @@ public abstract class ObjectPoolBase<T> : IDisposable, IObjectPool<T> where T : 
 {
     public const uint DefaultMaxSize = 1000;
     public const uint DefaultCapacity = 10;
-    public const bool DefaultCollectionCheck = true;
     
     [SerializeField] private uint _maxSize = DefaultMaxSize;
-    [SerializeField] private bool _collectionCheckDefault = DefaultCollectionCheck;
 
     private List<T> _list;
+
+    protected ObjectPoolBase(Action<T> actionOnGot = null,
+       Action<T> actionOnReleased = null,
+       Action<T> actionOnDestroyed = null,
+       uint defaultCapacity = DefaultCapacity,
+       uint maxSize = DefaultMaxSize)
+    {
+        SetList(defaultCapacity);
+        Got = actionOnGot;
+        Released = actionOnReleased;
+        Destroyed = actionOnDestroyed;
+        MaxSize = maxSize;
+    }
 
     public event Action<T> Created;
     public event Action<T> Destroyed;
     public event Action<T> Got;
     public event Action<T> Released;
 
-    public IReadOnlyCollection<T> Stack => _list;
     public int CountActive => CountAll - _list.Count;
     public int CountInactive => _list.Count;
     public int CountAll { get; private set; }
@@ -37,21 +47,6 @@ public abstract class ObjectPoolBase<T> : IDisposable, IObjectPool<T> where T : 
             
             _maxSize = value;
         }
-    }
-
-    protected ObjectPoolBase([DefaultValue(DefaultCollectionCheck)] bool collectionCheckDefault,
-       Action<T> actionOnGot = null,
-       Action<T> actionOnReleased = null,
-       Action<T> actionOnDestroyed = null,
-       uint defaultCapacity = DefaultCapacity,
-       uint maxSize = DefaultMaxSize)
-    {
-        SetStack(defaultCapacity);
-        Got = actionOnGot;
-        Released = actionOnReleased;
-        Destroyed = actionOnDestroyed;
-        MaxSize = maxSize;
-        _collectionCheckDefault = collectionCheckDefault;
     }
 
     public void Dispose()
@@ -92,10 +87,11 @@ public abstract class ObjectPoolBase<T> : IDisposable, IObjectPool<T> where T : 
         T entity = _list[randomIndex];
 
         _list.RemoveAt(randomIndex);
+        Got(entity);
         return entity;
     }
 
-    protected void SetStack(uint capacity)
+    protected void SetList(uint capacity)
     {
         Assert.IsNull(_list);
         _list = new List<T>((int)capacity);
@@ -105,17 +101,14 @@ public abstract class ObjectPoolBase<T> : IDisposable, IObjectPool<T> where T : 
     {
         T entity = CreateNew();
         ++CountAll;
-        Created(entity);
+        Created?.Invoke(entity);
         return entity;
     }
 
     public abstract T CreateNew();
 
-    public void Release(ref T entity, bool collectionCheck = true)
+    public void Release(T entity)
     {
-        if (collectionCheck && _list.Count > 0 && _list.Contains(entity))
-            throw new InvalidOperationException("Trying to release an object that has already been released to the pool.");
-
         Released(entity);
 
         if (_list.Count < _maxSize)
@@ -124,10 +117,5 @@ public abstract class ObjectPoolBase<T> : IDisposable, IObjectPool<T> where T : 
             Destroyed(entity);
 
         entity = null;
-    }
-
-    public void Release(ref T entity)
-    {
-        Release(ref entity, _collectionCheckDefault);
     }
 }

@@ -6,6 +6,7 @@ public class MagnetField : MonoBehaviour
     [SerializeField] private RobotMovement _robotMovement;
     [SerializeField] private Transform _target;
     [SerializeField] private float _boxCastDistance;
+    [SerializeField] private ParticleSystem _magnetEffect;
 
     private Vector3 _boxHalfSize = new Vector3(4, 4, 1);
     private Vector2 _boxPositon = new Vector2(-2, 0);
@@ -46,8 +47,12 @@ public class MagnetField : MonoBehaviour
     {
         WaitForSeconds seconds = new WaitForSeconds(duration);
 
+        _magnetEffect.Play();
         _isActive = true;
+
         yield return seconds;
+
         _isActive = false;
+        _magnetEffect.Stop();
     }
 }

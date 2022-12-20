@@ -52,16 +52,16 @@ public class Level : MonoBehaviour
         if (_isLevelAllFrameSpawned)
             return;
 
-        _frameSpawner.TryDeleteFirst(_initialFramesCount);
-        _obstacleSpawner.TryDeleteFirst(_initialFramesCount, _currentLevelProperties.ObstacleCountPerFrame);
+        _frameSpawner.ReleaseFirst(_initialFramesCount);
+        _obstacleSpawner.ReleaseFirst(_initialFramesCount);
         _frameSpawner.Spawn();
         SpawnObstacle();
     }
 
     public void OnLevelFinished()
     {
-        _frameSpawner.ResetState();
-        _obstacleSpawner.ResetState();
+        _frameSpawner.Dispose();
+        _obstacleSpawner.Dispose();
     }
 
     public void TurnNextLevel()
@@ -89,7 +89,7 @@ public class Level : MonoBehaviour
         {
             _frameSpawner.Spawn();
 
-            if (_frameSpawner.ActiveFrames.Count > 1)
+            if (_frameSpawner.SpawnedFrames.Count > 1)
                 SpawnObstacle();
         }
     }
@@ -97,13 +97,15 @@ public class Level : MonoBehaviour
     private void SpawnObstacle()
     {
         float obstacleSpace = Random.Range(_currentLevelProperties.MinObstacleSpace, _currentLevelProperties.MaxObstacleSpace);
-        float obstaclePosition = _frameSpawner.LastFrameOriginZ;
+        float obstaclePositionZ = _frameSpawner.LastFrameOriginZ;
+        Vector3 obstaclePosition;
 
         for (int i = 0; i < _currentLevelProperties.ObstacleCountPerFrame; i++)
         {
             if(i > 0)
-                obstaclePosition += obstacleSpace;
+                obstaclePositionZ += obstacleSpace;
 
+            obstaclePosition = new Vector3(0, 0, obstaclePositionZ);
             _obstacleSpawner.Spawn(obstaclePosition);
         }
     }

@@ -2,15 +2,25 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[Serializable]
 public class ObstaclePreparer
 {
-    [SerializeField] private ItemSpawner2 _itemSpawner;
-    [SerializeField] private uint _minItemSpawnChance = 0;
-    [SerializeField] private uint _maxItemSpawnChance = 100;
+    private ItemSpawner _itemSpawner;
+    private uint _minItemSpawnChance = 0;
+    private uint _maxItemSpawnChance = 100;
 
     private LevelProperties _levelProperties;
     private float _buffSpawnChance;
+
+    public ObstaclePreparer(ItemSpawner itemSpawner,
+        LevelProperties levelProperties,
+        uint minItemSpawnChance = 0,
+        uint maxItemSpawnChance = 100)
+    {
+        _itemSpawner = itemSpawner;
+        _levelProperties = levelProperties;
+        _minItemSpawnChance = minItemSpawnChance;
+        _maxItemSpawnChance = maxItemSpawnChance;
+    }
 
     public void Prepare(Obstacle obstacle)
     {
@@ -32,10 +42,9 @@ public class ObstaclePreparer
 
     private void SpawnRandomBuff(Transform point)
     {
-        int length = Enum.GetValues(typeof(ItemType)).Length;
-        ItemType itemType = (ItemType)Random.Range(1, length);
+        Item buff = _itemSpawner.Buffs[Random.Range(0, _itemSpawner.Buffs.Count)];
 
-        _itemSpawner.SpawnBy(itemType, point.position, point);
+        _itemSpawner.Spawn(buff, point.position, point);
     }
 
     private void SpawnNuts(Transform point)
@@ -54,7 +63,7 @@ public class ObstaclePreparer
 
             lastNutPosition = nutPosition;
 
-            _itemSpawner.SpawnBy(ItemType.Nut, nutPosition, point);
+            _itemSpawner.Spawn(_itemSpawner.Nut, nutPosition, point);
         }
     }
 
@@ -67,7 +76,7 @@ public class ObstaclePreparer
             items = obstacle.ItemSpawnPoints[i].GetComponentsInChildren<Item>();
 
             for (int x = 0; x < items.Length; x++)
-                _itemSpawner.Release(ref items[x]);
+                _itemSpawner.Release(items[x]);
         }
     }
 }

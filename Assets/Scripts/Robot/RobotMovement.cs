@@ -4,8 +4,11 @@ using UnityEngine.Events;
 
 public class RobotMovement : MonoBehaviour, IResetable
 {
-    [SerializeField] private float _defaultSpeed = 30;
-    [SerializeField] private float _defaultVelocitySpeed = 5;
+    private const float DefaultSpeed = 30;
+    private const float DefaultVelocitySpeed = 5;
+
+    [SerializeField] private float _defaultSpeed = DefaultSpeed;
+    [SerializeField] private float _defaultVelocitySpeed = DefaultVelocitySpeed;
     [SerializeField] private float _speed;
     [SerializeField] private float _velocitySpeed;
     [SerializeField] private float _lerpMaxDelta;
@@ -13,6 +16,7 @@ public class RobotMovement : MonoBehaviour, IResetable
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private Portal _portal;
     [SerializeField] private Level _level;
+    [SerializeField] private ParticleSystem _featherEffect;
 
     private Vector3 _targetPosition;
     private Vector2 _horizontalPositionRange = new Vector2(-3.5f, -0.5f);
@@ -91,9 +95,11 @@ public class RobotMovement : MonoBehaviour, IResetable
     public void IncreaseSpeedAndVelocity()
     {
         float speedIncrement = 0.5f;
-        float velocityIncrement = 0.5f;
-        _velocitySpeed += velocityIncrement;
+        float velocityDecrement = -0.25f;
+
+        _velocitySpeed += velocityDecrement;
         _speed += speedIncrement;
+
         SpeedChanged?.Invoke(_speed);
     }
 
@@ -142,6 +148,8 @@ public class RobotMovement : MonoBehaviour, IResetable
         WaitForSeconds seconds = new WaitForSeconds(duration);
         float targetSpeed = _speed - speedDecrement;
 
+        _featherEffect.Play();
+
         while(_speed != targetSpeed)
         {
             _speed = Mathf.MoveTowards(_speed, targetSpeed, _lerpMaxDelta);
@@ -151,6 +159,8 @@ public class RobotMovement : MonoBehaviour, IResetable
         SpeedChanged?.Invoke(_speed);
 
         yield return seconds;
+
+        _featherEffect.Stop();
 
         targetSpeed = _speed + speedDecrement;
 

@@ -10,6 +10,7 @@ public class Collector : MonoBehaviour
     [SerializeField] private float _boxCastDistance;
     [SerializeField] private AudioClip _coinSound;
     [SerializeField] private AudioClip _buffSound;
+    [SerializeField] private ItemSpawner _itemSpawner;
 
     private BoxCollider _boxCollider;
     private AudioSource _audioSource;
@@ -55,6 +56,6 @@ public class Collector : MonoBehaviour
             _buffApplyer.Apply(item);
         }
 
-        item.Pick();
+        _itemSpawner.Release(item);
     }
 }

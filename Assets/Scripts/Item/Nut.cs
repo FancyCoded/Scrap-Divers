@@ -7,15 +7,14 @@ public class Nut : Item
 
     public NutMovement Movement => _nutMovement;
 
-    public override void Init(ItemSpawner itemSpawner)
+    private void Awake()
     {
-        base.Init(itemSpawner);
         _nutMovement = GetComponent<NutMovement>();
     }
 
-    public override void Pick()
+    private void OnDisable()
     {
-        base.Pick();
-        _nutMovement.Disable();
+        if(_nutMovement.enabled)
+            _nutMovement.Disable();
     }
 }
