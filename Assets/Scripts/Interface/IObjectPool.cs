@@ -11,6 +11,5 @@ public interface IObjectPool<T> where T : Component
     int CountInactive { get; }
 
     T Get();
-    void Clear();
     void Release(T entity);
 }

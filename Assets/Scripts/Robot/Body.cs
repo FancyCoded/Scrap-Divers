@@ -71,7 +71,7 @@ public class Body : MonoBehaviour, IRepairable
 
     private void OnPartDestructed(Part part)
     {
-        int emissionFactor = 10;
+        int emissionFactor = 5;
 
         if (part.PartType == PartType.Trunk)
             Die();

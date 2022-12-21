@@ -11,7 +11,7 @@ public class TriggerMoveObstacle : MonoBehaviour, IResetable, IMoveable
 
     private void Awake()
     {
-        _startPosition = transform.position;
+        _startPosition = transform.localPosition;
     }
 
     private void OnDisable()
@@ -30,7 +30,7 @@ public class TriggerMoveObstacle : MonoBehaviour, IResetable, IMoveable
         if(_move != null)
             StopCoroutine(_move);
 
-        transform.position = new Vector3(_startPosition.x, _startPosition.y, transform.position.z);
+        transform.localPosition= new Vector3(_startPosition.x, _startPosition.y, transform.localPosition.z);
     }
 
     private IEnumerator MoveTo(Vector3 targetPosition)

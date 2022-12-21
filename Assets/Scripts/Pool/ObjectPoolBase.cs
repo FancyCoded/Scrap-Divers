@@ -50,11 +50,6 @@ public abstract class ObjectPoolBase<T> : IDisposable, IObjectPool<T> where T : 
 
     public void Dispose()
     {
-        Clear();
-    }
-
-    public virtual void Clear()
-    {
         if (Destroyed != null)
             foreach (T entity in _list)
                 Destroyed(entity);

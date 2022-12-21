@@ -33,7 +33,10 @@ public class ItemPool : MonoBehaviour
             _items.Add(_templates[i].Type, _templates[i]);
 
             for(int j = 0; j < _initialCount; j++)
-                Release(Create(_templates[i]));
+            {
+                Item item = Create(_templates[i]);
+                Release(item);
+            }
 
             if (_templates[i] is Nut)
                 continue;
