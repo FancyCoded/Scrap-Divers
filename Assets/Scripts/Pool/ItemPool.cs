@@ -17,8 +17,6 @@ public class ItemPool : MonoBehaviour
     private ObjectPool<Star> _starPool;
     private ObjectPool<Wrench> _wrenchPool;
 
-    private ItemPoolFunctions _itemPoolFunctions;
-
     public Nut Nut => (Nut)_items[ItemType.Nut];
     public List<Item> Buffs => _buffs;
 
@@ -29,7 +27,6 @@ public class ItemPool : MonoBehaviour
         _starPool = new ObjectPool<Star>(CreateStar, OnGot, OnReleased, OnDestoyed);
         _nutPool = new ObjectPool<Nut>(CreateNut, OnGot, OnReleased, OnDestoyed);
         _featherPool = new ObjectPool<Feather>(CreateFeather, OnGot, OnReleased, OnDestoyed);
-        _itemPoolFunctions = new ItemPoolFunctions(_featherPool, _magnetPool, _wrenchPool, _starPool, _nutPool);
 
         for (int i = 0; i < _templates.Length; i++)
         {
@@ -45,7 +42,19 @@ public class ItemPool : MonoBehaviour
         }
     }
 
-    public void Release(Item item) => _itemPoolFunctions.Visit(item);
+    public void Release(Item item)
+    {
+        if(item is Feather feather) 
+            _featherPool.Release(feather);
+        if(item is Star star) 
+            _starPool.Release(star);
+        if(item is Wrench wrench) 
+            _wrenchPool.Release(wrench);
+        if(item is Nut nut) 
+            _nutPool.Release(nut);
+        if(item is Magnet magnet)
+            _magnetPool.Release(magnet);
+    }
 
     public Nut GetNut() => _nutPool.Get();
     public Wrench GetWrench() => _wrenchPool.Get();
@@ -70,33 +79,4 @@ public class ItemPool : MonoBehaviour
     private void OnGot(Item item) => item.gameObject.SetActive(true);
     
     private void OnDestoyed(Item item) => Destroy(item.gameObject);
-
-    private class ItemPoolFunctions : IItemVisitor
-    {
-        private readonly ObjectPool<Feather> _featherPool;
-        private readonly ObjectPool<Magnet> _magnetPool;
-        private readonly ObjectPool<Wrench> _wrenchPool;
-        private readonly ObjectPool<Star> _starPool;
-        private readonly ObjectPool<Nut> _nutPool;
-
-        public ItemPoolFunctions(ObjectPool<Feather> featherPool, 
-            ObjectPool<Magnet> magnetPool, 
-            ObjectPool<Wrench> wrenchPool, 
-            ObjectPool<Star> starPool, 
-            ObjectPool<Nut> nutPool)
-        {
-            _featherPool = featherPool;
-            _magnetPool = magnetPool;
-            _wrenchPool = wrenchPool;
-            _starPool = starPool;
-            _nutPool = nutPool;
-        }
-
-        public void Visit(Item item, ItemVisitParams visitParams = null) => Visit((dynamic)item, visitParams);
-        public void Visit(Magnet magnet, ItemVisitParams visitParams) => _magnetPool.Release(magnet);
-        public void Visit(Star star, ItemVisitParams visitParams) => _starPool.Release(star);
-        public void Visit(Feather feather, ItemVisitParams visitParams) => _featherPool.Release(feather);
-        public void Visit(Wrench wrench, ItemVisitParams visitParams) => _wrenchPool.Release(wrench);
-        public void Visit(Nut nut, ItemVisitParams visitParams) => _nutPool.Release(nut);
-    }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 using Component = UnityEngine.Component;
@@ -69,7 +68,7 @@ public abstract class ObjectPoolBase<T> : IDisposable, IObjectPool<T> where T : 
         if (_list.Count == 0)
             return GetNew();
 
-        T entity = _list.Last();
+        T entity = _list[_list.Count - 1];
 
         _list.Remove(entity);
         Got(entity);
