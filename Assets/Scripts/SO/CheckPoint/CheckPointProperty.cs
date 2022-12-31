@@ -4,11 +4,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "CheckPointProperty", order = 51)]
 public class CheckPointProperty : ScriptableObject, IReadonlyCheckPointProperty, IResetable
 {
-    [JsonProperty] [SerializeField] private uint _level;
-    [JsonProperty] [SerializeField] private uint _distance;
-    [JsonProperty] [SerializeField] private uint _price;
-    [JsonProperty] [SerializeField] private bool _isBought;
-    [JsonProperty] [SerializeField] private bool _isChecked;
+    [JsonProperty][SerializeField] private uint _level;
+    [JsonProperty][SerializeField] private uint _distance;
+    [JsonProperty][SerializeField] private uint _price;
+    [JsonProperty][SerializeField] private bool _isBought;
+    [JsonProperty][SerializeField] private bool _isChecked;
 
     public uint Level => _level;
     public uint Distance => _distance;

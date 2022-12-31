@@ -17,7 +17,7 @@ public class MenuStorageComposition : StorageComposition, IResetable
         _checkPointMap.Inited += _checkPointMapView.OnUpdated;
         _checkPointMap.PointCheckPropertyChanged += _checkPointMapView.OnPointCheckPropertyChanged;
         _checkPointMap.PointSold += _checkPointMapView.OnUpdated;
-        
+
         _checkPointMapView.PointCheckButtonClicked += _checkPointMap.OnPointChecked;
         _checkPointMapView.PointSellButtonClicked += _checkPointMap.OnPointSold;
 

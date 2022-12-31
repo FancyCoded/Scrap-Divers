@@ -13,13 +13,13 @@ public class ObstaclePool : MonoBehaviour, IDisposable
 
     public void Init(LevelProperties levelProperties)
     {
-        _pool ??= new ObjectPool<Obstacle>(CreateNew, OnGot, OnReleased, OnDestroyed);
+        _pool ??= new ObjectPool<Obstacle>(CreateNew, OnDestroyed, OnGot, OnReleased);
         _levelProperties = levelProperties;
 
         for (int i = 0; i < _templates.Length; i++)
         {
             Obstacle obstacle = Create(_templates[i]);
-            _pool.Release(obstacle);
+            Release(obstacle);
         }
     }
 
@@ -27,7 +27,7 @@ public class ObstaclePool : MonoBehaviour, IDisposable
 
     public Obstacle GetRandom() => _pool.GetRandom();
 
-    public void Release(Obstacle obstacle) => _pool.Release(obstacle);
+    public void Release(Obstacle obstacle) => _pool?.Release(obstacle);
 
     public void Dispose() => _pool?.Dispose();
 
@@ -39,9 +39,9 @@ public class ObstaclePool : MonoBehaviour, IDisposable
 
     private Obstacle Create(Obstacle template) => Instantiate(template, _container);
 
-    private void OnGot(Obstacle entity) => entity.gameObject.SetActive(true);
+    private void OnGot(Obstacle obstacle) => obstacle.gameObject.SetActive(true);
 
-    private void OnReleased(Obstacle entity) => entity.gameObject.SetActive(false);
+    private void OnReleased(Obstacle obstacle) => obstacle.gameObject.SetActive(false);
 
     private void OnDestroyed(Obstacle obstacle) => Destroy(obstacle.gameObject);
 }

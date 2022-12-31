@@ -16,6 +16,6 @@ public class CheckPoint : MonoBehaviour
         _checkPointMapView = checkPointsMapView;
         _properties = checkPointProperty;
 
-        _distance.text = $"{ _properties.Distance}m";
+        _distance.text = $"{_properties.Distance}m";
     }
 }

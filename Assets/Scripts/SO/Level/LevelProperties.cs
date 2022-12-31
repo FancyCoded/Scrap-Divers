@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Level props", order = 51)]
+[CreateAssetMenu(menuName = "Level props", order = 51)]
 public class LevelProperties : ScriptableObject
 {
     [SerializeField] private uint _level;

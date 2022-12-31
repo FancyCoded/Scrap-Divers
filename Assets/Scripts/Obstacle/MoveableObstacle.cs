@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class MoveableObstacle : MonoBehaviour, IResetable, IMoveable
 {
@@ -30,10 +30,10 @@ public class MoveableObstacle : MonoBehaviour, IResetable, IMoveable
         _move = MoveTo(_targetPosition);
         StartCoroutine(_move);
     }
-    
+
     public void ResetState()
     {
-        if(_move != null)
+        if (_move != null)
             StopCoroutine(_move);
 
         transform.localPosition = _startPosition;
@@ -55,7 +55,7 @@ public class MoveableObstacle : MonoBehaviour, IResetable, IMoveable
 
             yield return cooldown;
 
-            while(transform.localPosition != _startPosition)
+            while (transform.localPosition != _startPosition)
             {
                 transform.localPosition = Vector3.MoveTowards(transform.localPosition, _startPosition, maxDelta);
                 yield return null;

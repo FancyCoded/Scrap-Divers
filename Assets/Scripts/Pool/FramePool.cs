@@ -13,17 +13,17 @@ public class FramePool : MonoBehaviour, IDisposable
     public void Init(uint initialCount, LevelProperties levelProperties)
     {
         _levelProperties = levelProperties;
-     
-        _pool ??= new ObjectPool<Frame>(CreateNew, OnGot, OnReleased, OnDestoyed);
+
+        _pool ??= new ObjectPool<Frame>(CreateNew, OnDestoyed, OnGot, OnReleased);
 
         for (int i = 0; i < initialCount; i++)
         {
             Frame frame = CreateNew();
-            _pool.Release(frame);
+            Release(frame);
         }
     }
 
-    public Frame Get () => _pool.Get();
+    public Frame Get() => _pool.Get();
 
     public void Release(Frame frame) => _pool.Release(frame);
 

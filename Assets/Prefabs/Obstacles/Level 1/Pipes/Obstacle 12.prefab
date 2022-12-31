@@ -57,9 +57,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7476093586720884587}
     m_Modifications:
+    - target: {fileID: 161226, guid: 5e8870365c5f05b4d85ab699f32a8e18, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 186524, guid: 5e8870365c5f05b4d85ab699f32a8e18, type: 3}
       propertyPath: m_Name
       value: pipe_col_3 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 186524, guid: 5e8870365c5f05b4d85ab699f32a8e18, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 419574, guid: 5e8870365c5f05b4d85ab699f32a8e18, type: 3}
       propertyPath: m_RootOrder
@@ -135,6 +143,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: combin_1
       objectReference: {fileID: 0}
+    - target: {fileID: 138016, guid: 74b028a3680306745b3e1503be470489, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 144852, guid: 74b028a3680306745b3e1503be470489, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 467722, guid: 74b028a3680306745b3e1503be470489, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -205,9 +221,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7476093586720884587}
     m_Modifications:
+    - target: {fileID: 161226, guid: 5e8870365c5f05b4d85ab699f32a8e18, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 186524, guid: 5e8870365c5f05b4d85ab699f32a8e18, type: 3}
       propertyPath: m_Name
       value: pipe_col_3 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 186524, guid: 5e8870365c5f05b4d85ab699f32a8e18, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 419574, guid: 5e8870365c5f05b4d85ab699f32a8e18, type: 3}
       propertyPath: m_RootOrder
@@ -315,6 +339,14 @@ PrefabInstance:
     - target: {fileID: 115076, guid: 0cc7094b669d9dd45867fe386510cb7d, type: 3}
       propertyPath: m_Name
       value: pipe_col_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 115076, guid: 0cc7094b669d9dd45867fe386510cb7d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 120594, guid: 0cc7094b669d9dd45867fe386510cb7d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 467146, guid: 0cc7094b669d9dd45867fe386510cb7d, type: 3}
       propertyPath: m_RootOrder

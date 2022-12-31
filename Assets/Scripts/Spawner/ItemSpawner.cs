@@ -30,20 +30,20 @@ public class ItemSpawner : MonoBehaviour
         _nutSpawner = new ObjectSpawner<Nut>(GetNut, OnSpawned);
         _starSpawner = new ObjectSpawner<Star>(GetStar, OnSpawned);
         _wrenchSpawner = new ObjectSpawner<Wrench>(GetWrench, OnSpawned);
-        _isInited = true; 
+        _isInited = true;
     }
 
     public void Spawn(Item item, Vector3 position, Transform parent)
     {
         if (item is Nut)
             _nutSpawner.Spawn(position, parent);
-        if(item is Wrench)
+        if (item is Wrench)
             _wrenchSpawner.Spawn(position, parent);
-        if(item is Star)
+        if (item is Star)
             _starSpawner.Spawn(position, parent);
-        if(item is Magnet)
+        if (item is Magnet)
             _magnetSpawner.Spawn(position, parent);
-        if(item is Feather)
+        if (item is Feather)
             _featherSpawner.Spawn(position, parent);
     }
 

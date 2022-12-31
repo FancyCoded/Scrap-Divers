@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(BoxCollider), typeof(AudioSource))]
-public class Collector : MonoBehaviour 
+public class Collector : MonoBehaviour
 {
     [SerializeField] private uint _nutCount = 0;
     [SerializeField] private Rigidbody _rigidbody;
@@ -44,7 +44,7 @@ public class Collector : MonoBehaviour
 
     private void Collect(Item item)
     {
-        if(item is Nut)
+        if (item is Nut)
         {
             _audioSource.PlayOneShot(_coinSound);
             _nutCount += 1;

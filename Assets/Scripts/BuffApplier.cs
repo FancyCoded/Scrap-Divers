@@ -9,13 +9,13 @@ public class BuffApplier : MonoBehaviour
 
     public void Apply(Item item)
     {
-        if(item is Magnet magnet)
+        if (item is Magnet magnet)
             _magnetField.ActivateFor(magnet.Duration);
-        if(item is Star star)
+        if (item is Star star)
             _ragdollScaler.ChangeScaleFor(star.Duration, star.TargetScale);
-        if(item is Wrench wrench)
+        if (item is Wrench wrench)
             _body.Repair();
-        if(item is Feather feather)
+        if (item is Feather feather)
             _robotMovement.ReduceSpeedFor(feather.Duration, feather.SpeedDecrement);
     }
 

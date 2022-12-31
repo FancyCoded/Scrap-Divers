@@ -27,13 +27,13 @@ public class Body : MonoBehaviour, IRepairable
         {
             _parts[i].Damaged += OnPartDamaged;
             _parts[i].Destructed += OnPartDestructed;
-        }        
+        }
     }
-    
+
     public void Repair()
     {
         _emission.rateOverTime = 0;
-        
+
         for (int i = 0; i < _parts.Count; i++)
         {
             _parts[i].Repair();

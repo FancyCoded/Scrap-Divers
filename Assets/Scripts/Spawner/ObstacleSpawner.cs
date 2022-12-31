@@ -29,7 +29,7 @@ public class ObstacleSpawner : MonoBehaviour, IDisposable
         if (_spawnedObstacles.Count <= initialFrameCount * _levelProperties.ObstacleCountPerFrame)
             return;
 
-        for(int i = 0; i < _levelProperties.ObstacleCountPerFrame; i++)
+        for (int i = 0; i < _levelProperties.ObstacleCountPerFrame; i++)
         {
             Obstacle obstacle = _spawnedObstacles.Dequeue();
 
@@ -40,8 +40,8 @@ public class ObstacleSpawner : MonoBehaviour, IDisposable
 
     public void Dispose()
     {
-        while(_spawnedObstacles.Count > 0) 
-        { 
+        while (_spawnedObstacles.Count > 0)
+        {
             Obstacle target = _spawnedObstacles.Dequeue();
 
             _obstaclePreparer.ReleaseChilds(target);

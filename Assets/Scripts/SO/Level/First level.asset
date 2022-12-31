@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 1
   _levelStartPositionZ: 0
-  _levelLenght: 1000
+  _levelLenght: 500
   _minObstacleSpace: 15
   _maxObstacleSpace: 25
   _obstacleCountPerFrame: 4

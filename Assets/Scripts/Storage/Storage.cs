@@ -26,10 +26,10 @@ public class Storage
     public int BestDistance => PlayerPrefs.GetInt(BestDistanceKey) | 0;
     public int BestCollectedNuts => PlayerPrefs.GetInt(BestCollectedNutsKey) | 0;
     public int GenrealAudioAcitivity => PlayerPrefs.GetInt(GeneralAudioActivityKey) | 0;
-    public uint Nuts => (uint) PlayerPrefs.GetInt(NutCountKey) | 0;
+    public uint Nuts => (uint)PlayerPrefs.GetInt(NutCountKey) | 0;
     public string CheckPoints => PlayerPrefs.GetString(CheckPointsKey);
 
-    public void Init(Wallet wallet, CheckPointMap checkPointMap, Score score, 
+    public void Init(Wallet wallet, CheckPointMap checkPointMap, Score score,
         List<CheckPointProperty> checkPointPropertiesDefault, GeneralAudioActivityToggler generalAudio)
     {
         _score = score;

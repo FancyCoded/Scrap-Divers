@@ -18,7 +18,7 @@ public class MagnetField : MonoBehaviour
     {
         if (_isActive == false)
             return;
-        
+
         _boxCenter = new Vector3(_boxPositon.x, _boxPositon.y, transform.position.z);
 
         if (Physics.BoxCast(_boxCenter, _boxHalfSize, Vector3.forward, out RaycastHit _hit, Quaternion.identity, _boxCastDistance))

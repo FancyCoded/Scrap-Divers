@@ -1,5 +1,5 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
@@ -49,12 +49,12 @@ public class Part : MonoBehaviour, IDamageable, IRepairable
     public void ApplyDamage(float damage)
     {
         if (damage <= 0)
-            throw new ArgumentOutOfRangeException(); 
+            throw new ArgumentOutOfRangeException();
 
         _health -= damage;
         Damaged?.Invoke(this);
 
-        if(_dustEffect)
+        if (_dustEffect)
             _dustEffect.Play();
 
         float halfHealth = _maxHealth / 2;

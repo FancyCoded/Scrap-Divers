@@ -54,9 +54,61 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5296001080129502170}
     m_Modifications:
+    - target: {fileID: 120106, guid: c118874cabc1c6946b2daf5bcf356e53, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 132504, guid: c118874cabc1c6946b2daf5bcf356e53, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 135040, guid: c118874cabc1c6946b2daf5bcf356e53, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 137340, guid: c118874cabc1c6946b2daf5bcf356e53, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 139920, guid: c118874cabc1c6946b2daf5bcf356e53, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 141228, guid: c118874cabc1c6946b2daf5bcf356e53, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 149154, guid: c118874cabc1c6946b2daf5bcf356e53, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 169912, guid: c118874cabc1c6946b2daf5bcf356e53, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 180952, guid: c118874cabc1c6946b2daf5bcf356e53, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 193088, guid: c118874cabc1c6946b2daf5bcf356e53, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 193738, guid: c118874cabc1c6946b2daf5bcf356e53, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 195534, guid: c118874cabc1c6946b2daf5bcf356e53, type: 3}
       propertyPath: m_Name
       value: Pipes-group-17
+      objectReference: {fileID: 0}
+    - target: {fileID: 195534, guid: c118874cabc1c6946b2daf5bcf356e53, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 199154, guid: c118874cabc1c6946b2daf5bcf356e53, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 451982, guid: c118874cabc1c6946b2daf5bcf356e53, type: 3}
       propertyPath: m_RootOrder

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2417673026065615425
 Transform:
@@ -98,7 +98,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6100270385337841776
 Transform:
@@ -179,7 +179,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5220506124425972962
 Transform:
@@ -204,9 +204,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6100270385167613617}
     m_Modifications:
+    - target: {fileID: 117314, guid: 3aa1c254290ef1a4bbe10f2225258cd1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 129464, guid: 3aa1c254290ef1a4bbe10f2225258cd1, type: 3}
       propertyPath: m_Name
       value: pipe_col_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 129464, guid: 3aa1c254290ef1a4bbe10f2225258cd1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 460810, guid: 3aa1c254290ef1a4bbe10f2225258cd1, type: 3}
       propertyPath: m_RootOrder
@@ -314,6 +322,14 @@ PrefabInstance:
     - target: {fileID: 115076, guid: 0cc7094b669d9dd45867fe386510cb7d, type: 3}
       propertyPath: m_Name
       value: pipe_col_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 115076, guid: 0cc7094b669d9dd45867fe386510cb7d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 120594, guid: 0cc7094b669d9dd45867fe386510cb7d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 467146, guid: 0cc7094b669d9dd45867fe386510cb7d, type: 3}
       propertyPath: m_RootOrder

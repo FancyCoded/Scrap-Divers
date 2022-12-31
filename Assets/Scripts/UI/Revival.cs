@@ -1,8 +1,8 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using System.Collections;
-using TMPro;
 
 public class Revival : MonoBehaviour
 {
@@ -51,7 +51,7 @@ public class Revival : MonoBehaviour
         gameObject.SetActive(true);
 
         if (_score.NutCount > _storage.BestCollectedNuts)
-        _storage.SaveBestCollectedNuts();
+            _storage.SaveBestCollectedNuts();
 
         if (_score.Distance > _storage.BestDistance)
             _storage.SaveBestDistance();
@@ -72,7 +72,7 @@ public class Revival : MonoBehaviour
 
     private void OnReviveButtonClicked()
     {
-        if(_wallet.NutCount < _revivePrice)
+        if (_wallet.NutCount < _revivePrice)
             return;
 
         _scoreView.Display();
@@ -96,8 +96,8 @@ public class Revival : MonoBehaviour
         _countdownSlider.value = duration;
 
         float step = 0.001f;
-        
-        while(_countdownSlider.value > 0)
+
+        while (_countdownSlider.value > 0)
         {
             _countdownSlider.value -= step;
             yield return null;

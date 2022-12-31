@@ -9,6 +9,7 @@ public class Level : MonoBehaviour
     [SerializeField] private uint _initialFramesCount;
     [SerializeField] private Portal _portal;
     [SerializeField] private RobotMovement _robotMovement;
+    [SerializeField] private FrameEndHider _frameEndHider;
     [SerializeField] private LevelProperties[] _levelProperites;
 
     private LevelProperties _currentLevelProperties;
@@ -25,7 +26,7 @@ public class Level : MonoBehaviour
     {
         _currentLevel = level;
 
-        for(int i = 0; i < _levelProperites.Length; i++)
+        for (int i = 0; i < _levelProperites.Length; i++)
         {
             if (_currentLevel != _levelProperites[i].Level)
                 continue;
@@ -37,7 +38,8 @@ public class Level : MonoBehaviour
         _frameSpawner.Init(_currentLevelProperties, _initialFramesCount, startPosition);
         _itemSpawner.Init();
         _obstacleSpawner.Init(_currentLevelProperties);
-        
+
+        _frameEndHider.Enable();
         SpawnStartFrames();
     }
 
@@ -47,6 +49,7 @@ public class Level : MonoBehaviour
         {
             _isLevelAllFrameSpawned = true;
             _portal.Init();
+            _frameEndHider.Disable();
         }
 
         if (_isLevelAllFrameSpawned)
@@ -68,7 +71,7 @@ public class Level : MonoBehaviour
     {
         _currentLevel++;
 
-        for(int i = 0; i < _levelProperites.Length; i++)
+        for (int i = 0; i < _levelProperites.Length; i++)
         {
             if (_levelProperites[i].Level == _currentLevel)
             {
@@ -102,7 +105,7 @@ public class Level : MonoBehaviour
 
         for (int i = 0; i < _currentLevelProperties.ObstacleCountPerFrame; i++)
         {
-            if(i > 0)
+            if (i > 0)
                 obstaclePositionZ += obstacleSpace;
 
             obstaclePosition = new Vector3(0, 0, obstaclePositionZ);

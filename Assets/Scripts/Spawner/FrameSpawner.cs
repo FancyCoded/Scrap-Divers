@@ -50,7 +50,7 @@ public class FrameSpawner : MonoBehaviour, IDisposable
 
     public void Dispose()
     {
-        while(_spawnedFrames.Count > 0)
+        while (_spawnedFrames.Count > 0)
         {
             Frame frame = _spawnedFrames.Dequeue();
             _framePool.Release(frame);

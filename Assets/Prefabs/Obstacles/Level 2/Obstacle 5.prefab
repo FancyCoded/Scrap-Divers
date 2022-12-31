@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4906926044847186113
 Transform:
@@ -142,20 +142,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7727316096962773326, guid: 7ff7298d264e3ed4fa12981805828b7e, type: 3}
   m_PrefabInstance: {fileID: 4906926044649290413}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4906926044806147254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3396864421957549027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2072bed7eb89ce04d98b0aa327abf6d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 5
-  _itemSpawnPoints: []
 --- !u!64 &2218752900022797131
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -170,6 +156,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4337490644362310266, guid: 10213bc5a764bff4aa413bcc0ca743d8, type: 3}
+--- !u!114 &4906926044806147254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3396864421957549027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2072bed7eb89ce04d98b0aa327abf6d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 5
+  _itemSpawnPoints: []
 --- !u!1 &4942518398536295410 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 40459216157694303, guid: 7ff7298d264e3ed4fa12981805828b7e, type: 3}
@@ -208,20 +208,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 893239091237338350, guid: 7ff7298d264e3ed4fa12981805828b7e, type: 3}
   m_PrefabInstance: {fileID: 4906926044649290413}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4906926044004821051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5223484000082806339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2072bed7eb89ce04d98b0aa327abf6d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 5
-  _itemSpawnPoints: []
 --- !u!64 &4290734154400042985
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -236,18 +222,13 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2094762477375568550, guid: 10213bc5a764bff4aa413bcc0ca743d8, type: 3}
---- !u!1 &9084819344201609789 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4182476477013756048, guid: 7ff7298d264e3ed4fa12981805828b7e, type: 3}
-  m_PrefabInstance: {fileID: 4906926044649290413}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4906926044235790093
+--- !u!114 &4906926044004821051
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9084819344201609789}
+  m_GameObject: {fileID: 5223484000082806339}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2072bed7eb89ce04d98b0aa327abf6d5, type: 3}
@@ -255,6 +236,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 5
   _itemSpawnPoints: []
+--- !u!1 &9084819344201609789 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4182476477013756048, guid: 7ff7298d264e3ed4fa12981805828b7e, type: 3}
+  m_PrefabInstance: {fileID: 4906926044649290413}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &4906926044235790092
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -269,3 +255,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7737679472132065979, guid: 10213bc5a764bff4aa413bcc0ca743d8, type: 3}
+--- !u!114 &4906926044235790093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9084819344201609789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2072bed7eb89ce04d98b0aa327abf6d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 5
+  _itemSpawnPoints: []

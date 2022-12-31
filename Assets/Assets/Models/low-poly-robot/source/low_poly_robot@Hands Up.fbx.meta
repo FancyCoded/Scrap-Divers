@@ -3,7 +3,22 @@ guid: 7895a41ebe78a234583346ebc698c811
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base1_Male_glow_mat.001
+    second: {fileID: 2100000, guid: 64072990b8ccb9f409bd714b394aafde, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base1_Male_lambert2.001
+    second: {fileID: 2100000, guid: 9192ad4b6d8d53b41bfa17ee88416331, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base1_Male_secondary_mat.001
+    second: {fileID: 2100000, guid: 074f0d44e2f2cb944b067339a588756b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

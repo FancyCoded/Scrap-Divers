@@ -54,9 +54,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4151399892415472602}
     m_Modifications:
+    - target: {fileID: 113718, guid: 9b2a4e5561330964289724d0b4c42985, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 158556, guid: 9b2a4e5561330964289724d0b4c42985, type: 3}
       propertyPath: m_Name
       value: pipe_col_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 158556, guid: 9b2a4e5561330964289724d0b4c42985, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 448352, guid: 9b2a4e5561330964289724d0b4c42985, type: 3}
       propertyPath: m_RootOrder

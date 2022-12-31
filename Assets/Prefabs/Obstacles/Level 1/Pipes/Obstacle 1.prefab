@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5428712225165027804
 Transform:
@@ -97,7 +97,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7437453435584406657
 Transform:
@@ -130,7 +130,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3433033716965461219
 Transform:
@@ -154,9 +154,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6387798624862281310}
     m_Modifications:
+    - target: {fileID: 156554, guid: 2f5b6a868e8c2774ca02f5654ec00e0b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 163374, guid: 2f5b6a868e8c2774ca02f5654ec00e0b, type: 3}
       propertyPath: m_Name
       value: Pipes-bending-1-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 163374, guid: 2f5b6a868e8c2774ca02f5654ec00e0b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 195580, guid: 2f5b6a868e8c2774ca02f5654ec00e0b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 409018, guid: 2f5b6a868e8c2774ca02f5654ec00e0b, type: 3}
       propertyPath: m_LocalScale.x
@@ -338,9 +350,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6387798624862281310}
     m_Modifications:
+    - target: {fileID: 156554, guid: 2f5b6a868e8c2774ca02f5654ec00e0b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 163374, guid: 2f5b6a868e8c2774ca02f5654ec00e0b, type: 3}
       propertyPath: m_Name
       value: Pipes-bending-1-3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 163374, guid: 2f5b6a868e8c2774ca02f5654ec00e0b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 195580, guid: 2f5b6a868e8c2774ca02f5654ec00e0b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 409018, guid: 2f5b6a868e8c2774ca02f5654ec00e0b, type: 3}
       propertyPath: m_LocalScale.x
@@ -518,9 +542,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6387798624862281310}
     m_Modifications:
+    - target: {fileID: 161226, guid: 5e8870365c5f05b4d85ab699f32a8e18, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 186524, guid: 5e8870365c5f05b4d85ab699f32a8e18, type: 3}
       propertyPath: m_Name
       value: pipe_col_3 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 186524, guid: 5e8870365c5f05b4d85ab699f32a8e18, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 419574, guid: 5e8870365c5f05b4d85ab699f32a8e18, type: 3}
       propertyPath: m_RootOrder

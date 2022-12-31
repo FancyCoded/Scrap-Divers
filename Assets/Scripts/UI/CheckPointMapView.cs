@@ -60,7 +60,7 @@ public class CheckPointMapView : MonoBehaviour, IResetable
 
     public void OnPointCheckPropertyChanged(IReadonlyCheckPointProperty checkPointProperty)
     {
-        if(_boughtCheckPoints[checkPointProperty.Distance].Properties.IsChecked)
+        if (_boughtCheckPoints[checkPointProperty.Distance].Properties.IsChecked)
             _boughtCheckPoints[checkPointProperty.Distance].SetChecked();
         else
             _boughtCheckPoints[checkPointProperty.Distance].UnSetChecked();
@@ -76,9 +76,9 @@ public class CheckPointMapView : MonoBehaviour, IResetable
 
     public void ResetState()
     {
-        for(int i = 0; i<_content.childCount; i++)
+        for (int i = 0; i < _content.childCount; i++)
             Destroy(_content.GetChild(i).gameObject);
-        
+
         _boughtCheckPoints.Clear();
     }
 

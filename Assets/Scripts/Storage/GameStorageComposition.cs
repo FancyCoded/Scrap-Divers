@@ -12,7 +12,7 @@ public class GameStorageComposition : StorageComposition, IResetable
     [SerializeField] private Collector _collector;
     [SerializeField] private ScoreView _scoreView;
     [SerializeField] private GeneralAudioActivityToggler _generalAudioActivityToggler;
-    
+
     private readonly Wallet _wallet = new Wallet(0);
     private readonly CheckPointMap _checkPointMap = new CheckPointMap();
     private readonly Score _score = new Score();
@@ -63,7 +63,7 @@ public class GameStorageComposition : StorageComposition, IResetable
 
     private void FixedUpdate()
     {
-        _input.Update();        
+        _input.Update();
         _score.Update(Time.deltaTime);
     }
 

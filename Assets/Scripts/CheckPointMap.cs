@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Collections.Generic;
 
 public class CheckPointMap : IResetable
 {
@@ -40,7 +40,7 @@ public class CheckPointMap : IResetable
 
         Inited?.Invoke(AvaiableCheckPointProperties);
     }
-     
+
     public void OnPointChecked(IReadonlyCheckPointProperty checkPointProperty)
     {
         if (checkPointProperty.IsChecked)
@@ -55,7 +55,7 @@ public class CheckPointMap : IResetable
 
         _currentCheckPointProperty = _checkPointKeyValue[checkPointProperty.Distance];
         _currentCheckPointProperty.SetChecked();
-        
+
         PointCheckPropertyChanged?.Invoke(_currentCheckPointProperty);
     }
 
@@ -96,8 +96,8 @@ public class CheckPointMap : IResetable
     private void InsertionSort()
     {
         int length = _availableCheckPointProperties.Count;
-        
-        for(int i = 0; i < length; i++)
+
+        for (int i = 0; i < length; i++)
         {
             CheckPointProperty key = _availableCheckPointProperties[i];
             int j = i - 1;

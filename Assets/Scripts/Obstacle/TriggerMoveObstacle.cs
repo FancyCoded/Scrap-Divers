@@ -27,10 +27,10 @@ public class TriggerMoveObstacle : MonoBehaviour, IResetable, IMoveable
 
     public void ResetState()
     {
-        if(_move != null)
+        if (_move != null)
             StopCoroutine(_move);
 
-        transform.localPosition= new Vector3(_startPosition.x, _startPosition.y, transform.localPosition.z);
+        transform.localPosition = new Vector3(_startPosition.x, _startPosition.y, transform.localPosition.z);
     }
 
     private IEnumerator MoveTo(Vector3 targetPosition)

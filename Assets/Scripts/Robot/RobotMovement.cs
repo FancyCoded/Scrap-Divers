@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class RobotMovement : MonoBehaviour, IResetable
@@ -19,8 +19,8 @@ public class RobotMovement : MonoBehaviour, IResetable
     [SerializeField] private ParticleSystem _featherEffect;
 
     private Vector3 _targetPosition;
-    private Vector2 _horizontalPositionRange = new Vector2(-3.5f, -0.5f);
-    private Vector2 _verticalPositionRange = new Vector2(-1.5f, 1.5f);
+    private Vector2 _horizontalPositionRange = new Vector2(-3.3f, -0.7f);
+    private Vector2 _verticalPositionRange = new Vector2(-1.5f, 1.4f);
     private Vector2 _startPosition;
     private IEnumerator _reduceSpeed;
 
@@ -129,7 +129,7 @@ public class RobotMovement : MonoBehaviour, IResetable
     }
 
     private void Move()
-    {   
+    {
         _targetPosition = transform.position + Vector3.forward;
         transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed * Time.deltaTime);
 
@@ -139,7 +139,7 @@ public class RobotMovement : MonoBehaviour, IResetable
         _rigidbody.velocity = new Vector3(_input.Movement.x * _velocitySpeed, _input.Movement.y * _velocitySpeed);
         _rigidbody.transform.position = new Vector3(
             Mathf.Clamp(_rigidbody.transform.position.x, _horizontalPositionRange.x, _horizontalPositionRange.y),
-            Mathf.Clamp(_rigidbody.transform.position.y, _verticalPositionRange.x, _verticalPositionRange.y), 
+            Mathf.Clamp(_rigidbody.transform.position.y, _verticalPositionRange.x, _verticalPositionRange.y),
             transform.position.z);
     }
 
@@ -150,7 +150,7 @@ public class RobotMovement : MonoBehaviour, IResetable
 
         _featherEffect.Play();
 
-        while(_speed != targetSpeed)
+        while (_speed != targetSpeed)
         {
             _speed = Mathf.MoveTowards(_speed, targetSpeed, _lerpMaxDelta);
             yield return null;

@@ -14,7 +14,7 @@ public class Nut : Item
 
     private void OnDisable()
     {
-        if(_nutMovement.enabled)
+        if (_nutMovement.enabled)
             _nutMovement.Disable();
     }
 }

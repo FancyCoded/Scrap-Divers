@@ -20,7 +20,7 @@ public class RagdollScaler : MonoBehaviour
         _connectedAnchor = new Vector3[_characterJoints.Length];
         _anchor = new Vector3[_characterJoints.Length];
 
-        for(int i = 0; i < _characterJoints.Length; i++)
+        for (int i = 0; i < _characterJoints.Length; i++)
         {
             _connectedAnchor[i] = _characterJoints[i].connectedAnchor;
             _anchor[i] = _characterJoints[i].anchor;
@@ -47,7 +47,7 @@ public class RagdollScaler : MonoBehaviour
 
     public void ResetState()
     {
-        if(_scale != null)
+        if (_scale != null)
             StopCoroutine(_scale);
 
         transform.localScale = _defaultScale;
@@ -59,7 +59,7 @@ public class RagdollScaler : MonoBehaviour
         Vector3 targetScale = new Vector3(scale, scale, scale);
         WaitForSeconds seconds = new WaitForSeconds(duration);
 
-        while(transform.localScale != targetScale)
+        while (transform.localScale != targetScale)
         {
             transform.localScale = Vector3.MoveTowards(transform.localScale, targetScale, _maxDeltaOfGrowth);
             CorrectCharacterJoints();

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 
 public class ObjectSpawner<T> : IObjectSpawner<T> where T : Component
 {
@@ -8,18 +8,18 @@ public class ObjectSpawner<T> : IObjectSpawner<T> where T : Component
         _get = get;
         ObjectSpawned = actionOnSpawned;
     }
-    
-    private readonly Func<T> _get; 
+
+    private readonly Func<T> _get;
 
     public event Action<T> ObjectSpawned;
 
-    public void Spawn(Vector3 position, Transform parent = null) 
+    public void Spawn(Vector3 position, Transform parent = null)
     {
         T entity = _get();
 
         entity.transform.position = position;
 
-        if(parent)
+        if (parent)
             entity.transform.SetParent(parent);
 
         ObjectSpawned(entity);

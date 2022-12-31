@@ -24,11 +24,11 @@ public class ComposedTriggerMoveObstacle : MonoBehaviour, IMoveable, IResetable
     {
         WaitForSeconds cooldown = new WaitForSeconds(_cooldownPerObstacle);
 
-        for(int i = 0; i < _triggerMoveObstacles.Length; i++)
+        for (int i = 0; i < _triggerMoveObstacles.Length; i++)
         {
             _triggerMoveObstacles[i].Move();
 
-            if(i % 2 != 0)
+            if (i % 2 != 0)
                 yield return cooldown;
         }
     }
