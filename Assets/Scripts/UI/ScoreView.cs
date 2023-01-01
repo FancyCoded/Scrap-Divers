@@ -21,7 +21,7 @@ public class ScoreView : MonoBehaviour
     private void FixedUpdate()
     {
         if (_score != null && _score.ShouldRecord)
-            _coveredDistance.text = _score.Distance.ToString("F0") + 'm';
+            _coveredDistance.text = _score.Distance.ToString("F0");
     }
 
     public void Init(Score score)
@@ -41,6 +41,6 @@ public class ScoreView : MonoBehaviour
 
     private void OnLevelFinished()
     {
-        _coveredDistance.text = _score.Distance.ToString("F0") + 'm';
+        _coveredDistance.text = _score.Distance.ToString("F0");
     }
 }

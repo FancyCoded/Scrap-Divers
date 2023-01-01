@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cooldown: 0.5
-  _speed: 0.8
+  _speed: 0.9
   _targetPosition: {x: -0.3, y: 0, z: 0}
 --- !u!114 &1295944343606034896
 MonoBehaviour:
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cooldown: 0.5
-  _speed: 0.8
+  _speed: 0.9
   _targetPosition: {x: -3.7, y: 0, z: 0}
 --- !u!114 &1295944344205421610
 MonoBehaviour:
