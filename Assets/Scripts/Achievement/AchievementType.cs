@@ -1,0 +1,24 @@
+﻿public enum AchievementType
+{
+    Collect20Coin,
+    Collect60Coin,
+    Collect100Coin,
+    Collect3Fether,
+    Collect3Magnet,
+    Collect3Star,
+    Collect3Wrench,
+    DontLoseBodyPartFirst25Seconds,
+    DontLoseBodyPartFirst50Seconds,
+    Lose2BodyPartFirst20Seconds,
+    Lose4BodyPartFirst50Seconds,
+    LoseMaxBodyParts,
+    MaxCollide1First20Seconds,
+    MaxCollide2First60Seconds,
+    MaxCollide0First40Seconds,
+    CollideParts10TimesFirst30Seconds,
+    CollideParts15TimesFirst50Seconds,
+    Falling30Seconds,
+    Falling60Seconds,
+    Falling100Seconds,
+    FinishLevel1
+}

@@ -5,12 +5,14 @@ using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 
 public class PlayerInputRouter
 {
+    private const int MaxDeltaMagnitude = 1;
+    private const int TouchScreenSize = 150;
+
     private readonly PlayerInput _input;
 
     private bool _isTouchScreen = false;
     private Vector2 _startPosition = Vector2.zero;
 
-    public int TouchScreenSize => 50;
 
     public PlayerInputRouter()
     {
@@ -64,7 +66,7 @@ public class PlayerInputRouter
         Vector2 delta = finger.screenPosition - _startPosition;
         delta /= TouchScreenSize;
 
-        if (delta.magnitude >= 1f)
+        if (delta.magnitude >= MaxDeltaMagnitude)
             delta.Normalize();
 
         Movement = delta;

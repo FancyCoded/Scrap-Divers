@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 1
   _levelStartPositionZ: 0
-  _levelLenght: 500
+  _levelLength: 500
   _minObstacleSpace: 15
   _maxObstacleSpace: 25
   _obstacleCountPerFrame: 4
@@ -24,31 +24,9 @@ MonoBehaviour:
   _buffSpawnChanceMax: 25
   _frame: {fileID: 350205327875108611, guid: f0b36a4c514d78e4fbacd6ece5703978, type: 3}
   _obstacles:
-  - {fileID: 3435919387646860746, guid: 64561ed4aa09f2348a353472be5172e5, type: 3}
-  - {fileID: 5711540709794899348, guid: 15f37305d199f0f41b9d3afecb764f9c, type: 3}
-  - {fileID: 1295944344716244575, guid: d845c71068050de4b9ba2769cd02f7f3, type: 3}
-  - {fileID: 2020412807952634067, guid: fd06443c70d273942a9c3429ac567b97, type: 3}
-  - {fileID: 3887737358296965095, guid: 12bdbef0f62e1f74b9cf5982464b290c, type: 3}
   - {fileID: 2318092488067306786, guid: 89a9305fb83e7c343a7caabdeb7b92d4, type: 3}
   - {fileID: 6502426306700225614, guid: b99fc4f423d998a4ea1ad1722dcaca9c, type: 3}
   - {fileID: 1982473697923373185, guid: 1beeb903a3c461049826a994867a4e5f, type: 3}
   - {fileID: 3852725288333510070, guid: 59bab1a21014ec947a04cf1d46de4da4, type: 3}
   - {fileID: 2945654608140525777, guid: 567f26b513960a34196a33bb257d8fcf, type: 3}
   - {fileID: 3588979131568967010, guid: f0cab8ce48f4be74eb454696975c2a69, type: 3}
-  - {fileID: 1988620402810323769, guid: 740d2797134fc9b4f837c166b4614d74, type: 3}
-  - {fileID: 8847410272564119582, guid: e606d9d7228fa1241bb52aff214647b2, type: 3}
-  - {fileID: 1181172513987764974, guid: 14dd648e793719c48a66cd5c426aa0da, type: 3}
-  - {fileID: 8426707472959387799, guid: 140a0a513a1532f4f94f85bcd0f97d25, type: 3}
-  - {fileID: -5604931972517410381, guid: 7d71344b7aa1f4f458c5675125a9fac1, type: 3}
-  - {fileID: -5791041068819023808, guid: f7e8942ede541d9409c0999889655100, type: 3}
-  - {fileID: 1460103414242819445, guid: dbd59cac993d7224da01ed140562da29, type: 3}
-  - {fileID: 5661280630675959132, guid: 6b65d072263c4bb468fc52d2c2c019ff, type: 3}
-  - {fileID: 5528071821781915566, guid: 1294a17eb81214942bca862c9acac122, type: 3}
-  - {fileID: 2890809611044979866, guid: ee2386e25b6261a4590baa1af0a18558, type: 3}
-  - {fileID: 8797618235315712811, guid: 2707bdd6ca5869d478f167c089cddbc0, type: 3}
-  - {fileID: 5123283041892520934, guid: eda055c1d093a1a4998322941dea0ccb, type: 3}
-  - {fileID: 4349310568909431650, guid: 58bdb35ba9b6cca408c136912054f726, type: 3}
-  - {fileID: 290213522360953154, guid: f417b04c64354e142a8e1b73173d1ec0, type: 3}
-  - {fileID: 4720141029355998437, guid: e8096e4cdf987424b98b36dbf591c7b4, type: 3}
-  - {fileID: 3392998814253574675, guid: 411fe16cf840d734f893e15bbdf1272a, type: 3}
-  - {fileID: 6016744486762640492, guid: abccaf1bc94689e4c80a0a133f4ccdcd, type: 3}

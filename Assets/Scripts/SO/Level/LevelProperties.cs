@@ -5,7 +5,7 @@ public class LevelProperties : ScriptableObject
 {
     [SerializeField] private uint _level;
     [SerializeField] private uint _levelStartPositionZ;
-    [SerializeField] private uint _levelLenght;
+    [SerializeField] private uint _levelLength;
     [SerializeField] private float _minObstacleSpace = 15;
     [SerializeField] private float _maxObstacleSpace = 25;
     [SerializeField] private uint _obstacleCountPerFrame = 4;
@@ -21,7 +21,9 @@ public class LevelProperties : ScriptableObject
 
     public uint Level => _level;
     public uint LevelStartPositionZ => _levelStartPositionZ * _levelConfig.LevelMeterFactor;
-    public uint LevelLength => LevelStartPositionZ + _levelLenght * _levelConfig.LevelMeterFactor;
+    public uint LevelLength => _levelLength * _levelConfig.LevelMeterFactor;
+    public uint CoveredLevelsLengthPure => _levelLength + _levelStartPositionZ;
+    public uint CoveredLevelsLength => LevelStartPositionZ + LevelLength;
     public float MinObstacleSpace => _minObstacleSpace;
     public float MaxObstacleSpace => _maxObstacleSpace;
     public uint ObstacleCountPerFrame => _obstacleCountPerFrame;

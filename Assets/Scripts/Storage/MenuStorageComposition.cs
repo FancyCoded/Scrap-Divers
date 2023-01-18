@@ -4,10 +4,14 @@ using UnityEngine;
 public class MenuStorageComposition : StorageComposition, IResetable
 {
     [SerializeField] private List<CheckPointProperty> _checkPointPropertiesDefault;
+    [SerializeField] private List<AchievementProperties> _achievementPropertiesDefault;
     [SerializeField] private CheckPointMapView _checkPointMapView;
+    [SerializeField] private AchievementWindow _achievementWindow;
     [SerializeField] private WalletView _walletView;
     [SerializeField] private GeneralAudioActivityToggler _generalAudioActivityToggler;
 
+    private readonly AchievementMap _achievementMap = new AchievementMap();
+    private readonly AchievementFactory _achievementFactory = new AchievementFactory();
     private readonly Wallet _wallet = new Wallet(0);
     private readonly CheckPointMap _checkPointMap = new CheckPointMap();
     private readonly Score _score = new Score();
@@ -17,9 +21,13 @@ public class MenuStorageComposition : StorageComposition, IResetable
         _checkPointMap.Inited += _checkPointMapView.OnUpdated;
         _checkPointMap.PointCheckPropertyChanged += _checkPointMapView.OnPointCheckPropertyChanged;
         _checkPointMap.PointSold += _checkPointMapView.OnUpdated;
-
         _checkPointMapView.PointCheckButtonClicked += _checkPointMap.OnPointChecked;
         _checkPointMapView.PointSellButtonClicked += _checkPointMap.OnPointSold;
+
+        _achievementMap.Inited += _achievementWindow.OnUpdated;
+        _achievementMap.AchievementCompleted += _achievementWindow.OnAchievementCompleted;
+        _achievementMap.AchievementRewardCollected += _achievementWindow.OnUpdated;
+        _achievementWindow.CollectButtonClicked += _achievementMap.OnAchievementRewardCollected;
 
         _wallet.NutCountChanged += _walletView.OnNutCountChanged;
     }
@@ -29,9 +37,13 @@ public class MenuStorageComposition : StorageComposition, IResetable
         _checkPointMap.Inited -= _checkPointMapView.OnUpdated;
         _checkPointMap.PointCheckPropertyChanged -= _checkPointMapView.OnPointCheckPropertyChanged;
         _checkPointMap.PointSold -= _checkPointMapView.OnUpdated;
-
         _checkPointMapView.PointCheckButtonClicked -= _checkPointMap.OnPointChecked;
         _checkPointMapView.PointSellButtonClicked -= _checkPointMap.OnPointSold;
+
+        _achievementMap.Inited -= _achievementWindow.OnUpdated;
+        _achievementMap.AchievementCompleted -= _achievementWindow.OnAchievementCompleted;
+        _achievementMap.AchievementRewardCollected -= _achievementWindow.OnUpdated;
+        _achievementWindow.CollectButtonClicked -= _achievementMap.OnAchievementRewardCollected;
 
         _wallet.NutCountChanged -= _walletView.OnNutCountChanged;
     }
@@ -43,14 +55,16 @@ public class MenuStorageComposition : StorageComposition, IResetable
 
     public override void Compose()
     {
-        Storage.Init(_wallet, _checkPointMap, _score, _checkPointPropertiesDefault, _generalAudioActivityToggler);
+        Storage.Init(_wallet, _checkPointMap, _score, _achievementMap, _checkPointPropertiesDefault, _achievementPropertiesDefault, _generalAudioActivityToggler, _achievementFactory);
         Storage.Load();
+        Storage.Save();
     }
 
     [ContextMenu("Reset")]
     public void ResetState()
     {
         _checkPointMapView.ResetState();
+        _achievementMap.ResetState();
         _checkPointMap.ResetState();
         Storage.ResetState();
     }

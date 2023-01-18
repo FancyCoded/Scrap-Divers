@@ -40,7 +40,7 @@ public class TriggerMoveObstacle : MonoBehaviour, IResetable, IMoveable
         while (transform.localPosition != targetPosition)
         {
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, maxDelta);
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
     }
 }

@@ -12,7 +12,8 @@ public class Body : MonoBehaviour, IRepairable
     [SerializeField] private ParticleSystem _blackFog;
 
     private EmissionModule _emission;
-    private uint _destructedPartCount = 0;
+    public uint DestructedPartCount { get; private set; } = 0;
+    public uint CollidingsCount { get; private set; } = 0;
 
     public event UnityAction Died;
 
@@ -67,6 +68,7 @@ public class Body : MonoBehaviour, IRepairable
     private void OnPartDamaged(Part part)
     {
         _audioSource.PlayOneShot(part.HitSound);
+        CollidingsCount++;
     }
 
     private void OnPartDestructed(Part part)
@@ -76,8 +78,8 @@ public class Body : MonoBehaviour, IRepairable
         if (part.PartType == PartType.Trunk)
             Die();
 
-        _destructedPartCount++;
-        _emission.rateOverTime = _destructedPartCount * emissionFactor;
+        DestructedPartCount++;
+        _emission.rateOverTime = DestructedPartCount * emissionFactor;
 
         _robotMovement.IncreaseSpeedAndVelocity();
     }

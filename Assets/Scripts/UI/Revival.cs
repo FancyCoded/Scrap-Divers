@@ -108,6 +108,8 @@ public class Revival : MonoBehaviour
 
     private void GoForward()
     {
+        _storage.AchievementMap.CheckAchievementsComplete();
+        _storage.Save();
         gameObject.SetActive(false);
         _result.Display();
     }

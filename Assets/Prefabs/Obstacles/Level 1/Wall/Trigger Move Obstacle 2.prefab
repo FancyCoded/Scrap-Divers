@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75938a9d4b70fde408a0ed3b779f4b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
+  _speed: 1.3
   _targetPosition: {x: -4.3, y: 0, z: 0}
 --- !u!1 &2020412809477551222
 GameObject:
@@ -362,5 +362,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75938a9d4b70fde408a0ed3b779f4b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
+  _speed: 1.3
   _targetPosition: {x: 0.3, y: 0, z: 0}

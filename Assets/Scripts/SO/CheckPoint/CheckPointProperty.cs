@@ -22,20 +22,11 @@ public class CheckPointProperty : ScriptableObject, IReadonlyCheckPointProperty,
             _isBought = true;
     }
 
-    public void SetBought()
-    {
-        _isBought = true;
-    }
+    public void SetBought() => _isBought = true;
 
-    public void SetChecked()
-    {
-        _isChecked = true;
-    }
+    public void SetChecked() => _isChecked = true;
 
-    public void UnSetChecked()
-    {
-        _isChecked = false;
-    }
+    public void UnSetChecked() => _isChecked = false;
 
     public void ResetState()
     {
