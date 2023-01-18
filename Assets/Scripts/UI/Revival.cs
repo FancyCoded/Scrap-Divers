@@ -56,6 +56,9 @@ public class Revival : MonoBehaviour
         if (_score.Distance > _storage.BestDistance)
             _storage.SaveBestDistance();
 
+        if (_score.FallingTimer.Time > _storage.BestFallingTime)
+            _storage.SaveBestFallingTime();
+
         _wallet.Increase(_score.NutCount);
         _walletView.OnNutCountChanged(_wallet.NutCount);
         _storageComposition.Storage.Save();

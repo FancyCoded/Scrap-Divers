@@ -3,8 +3,10 @@
 public class FallingTimer
 {
     private bool _shouldRecord = true;
+    private float _elapsedTime = 0;
+    private uint _second = 1;
 
-    public float Time { get; private set; } = 0;
+    public uint Time { get; private set; } = 0;
 
     public event Action TimeChanged;
 
@@ -13,7 +15,13 @@ public class FallingTimer
         if (_shouldRecord == false)
             return;
 
-        Time += deltaTime;
+        _elapsedTime += deltaTime;
+
+        if (_elapsedTime < _second)
+            return;
+
+        _elapsedTime = 0;
+        Time += _second;
         TimeChanged?.Invoke();
     }
 

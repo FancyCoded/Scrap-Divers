@@ -13,6 +13,8 @@ public class Result : MonoBehaviour
     [SerializeField] private TMP_Text _bestDistanceText;
     [SerializeField] private TMP_Text _collectedNutsText;
     [SerializeField] private TMP_Text _bestCollectedNutsText;
+    [SerializeField] private TMP_Text _fallingTime;
+    [SerializeField] private TMP_Text _bestFallingTime;
     [SerializeField] private StorageComposition _storageComposition;
 
     private Storage _storage => _storageComposition.Storage;
@@ -37,6 +39,8 @@ public class Result : MonoBehaviour
         _bestCollectedNutsText.text = $"best: {_storage.BestCollectedNuts}";
         _distanceText.text = $"{_storage.Score.Distance}m";
         _bestDistanceText.text = $"best: {_storage.BestDistance}m";
+        _fallingTime.text = $"{_storage.Score.FallingTimer.Time}s";
+        _bestFallingTime.text = $"best: {_storage.BestFallingTime}s";
     }
 
     private void OnMenuButtonClicked()

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Score
 {
     private LevelConfig _config = new LevelConfig();
+    private FallingTimer _fallingTimer;
     private Vector3 _targetPosition;
     private Vector3 _position = Vector3.zero;
     private float _targetSpeed = 0;
@@ -14,9 +15,11 @@ public class Score
     public uint Distance => (uint)(_position.z * _config.ScoreMeterFactor);
     public bool ShouldRecord => _shouldRecord;
     public uint NutCount => _nutCount;
+    public FallingTimer FallingTimer => _fallingTimer;
 
-    public void Init(uint levelLength, float startPositionZ, bool isLastLevel)
+    public void Init(FallingTimer fallingTimer, uint levelLength, float startPositionZ, bool isLastLevel)
     {
+        _fallingTimer = fallingTimer;
         _position.z = startPositionZ;
         _levelLength = levelLength;
         _isLastLevel = isLastLevel;

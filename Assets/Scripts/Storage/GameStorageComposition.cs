@@ -99,7 +99,7 @@ public class GameStorageComposition : StorageComposition, IResetable
         _input = input;
         _level.Init(level, startPosition);
         _robotMovement.Init(_level.CurrentLevelProperties, startPosition, _input);
-        _score.Init(_level.CurrentLevelProperties.CoveredLevelsLength, startPosition, _level.IsLastLevel);
+        _score.Init(_fallingTimer, _level.CurrentLevelProperties.CoveredLevelsLength, startPosition, _level.IsLastLevel);
         _scoreView.Init(_score);
     }
 

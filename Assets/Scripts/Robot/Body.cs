@@ -14,6 +14,7 @@ public class Body : MonoBehaviour, IRepairable
     private EmissionModule _emission;
     public uint DestructedPartCount { get; private set; } = 0;
     public uint CollidingsCount { get; private set; } = 0;
+    public bool IsAlive { get; private set; } = true;
 
     public event UnityAction Died;
 
@@ -62,6 +63,7 @@ public class Body : MonoBehaviour, IRepairable
             _parts[i].Damaged -= OnPartDamaged;
         }
 
+        IsAlive = false;
         Died?.Invoke();
     }
 

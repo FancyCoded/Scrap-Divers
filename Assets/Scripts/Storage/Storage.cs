@@ -10,6 +10,7 @@ public class Storage
     protected const string AchievementsKey = "Achievements";
     protected const string BestDistanceKey = "BestDistance";
     protected const string BestCollectedNutsKey = "BestCollectedNuts";
+    protected const string BestFallingTimeKey = "BestFallingTime";
     protected const string GeneralAudioActivityKey = "AudioActivity";
     protected const string FirstLoad = "FirstLoad";
 
@@ -30,7 +31,8 @@ public class Storage
 
     public int BestDistance => PlayerPrefs.GetInt(BestDistanceKey, 0);
     public int BestCollectedNuts => PlayerPrefs.GetInt(BestCollectedNutsKey, 0);
-    public uint Nuts => (uint)PlayerPrefs.GetInt(NutCountKey, 0);
+    public uint Nuts => (uint) PlayerPrefs.GetInt(NutCountKey, 0);
+    public int BestFallingTime => PlayerPrefs.GetInt(BestFallingTimeKey);
     public string CheckPoints => PlayerPrefs.GetString(CheckPointsKey);
     public string Achievements => PlayerPrefs.GetString(AchievementsKey);
     public bool GenrealAudioAcitivity => Convert.ToBoolean(PlayerPrefs.GetInt(GeneralAudioActivityKey, 0));
@@ -100,6 +102,7 @@ public class Storage
         PlayerPrefs.SetInt(NutCountKey, 0);
         PlayerPrefs.SetInt(BestDistanceKey, 0);
         PlayerPrefs.SetInt(BestCollectedNutsKey, 0);
+        PlayerPrefs.SetInt(BestFallingTimeKey, 0);
         PlayerPrefs.SetInt(GeneralAudioActivityKey, 0);
         PlayerPrefs.SetInt(FirstLoad, 1);
     }
@@ -125,5 +128,10 @@ public class Storage
     public void SaveBestCollectedNuts()
     {
         PlayerPrefs.SetInt(BestCollectedNutsKey, (int)_score.NutCount);
+    }
+
+    public void SaveBestFallingTime()
+    {
+        PlayerPrefs.SetInt(BestFallingTimeKey, (int)_score.FallingTimer.Time);
     }
 }

@@ -1,4 +1,6 @@
-﻿public class FallingTimeAchievement : IAchievement
+﻿using UnityEngine;
+
+public class FallingTimeAchievement : IAchievement
 {
     private readonly IAchievement _achievement;
     private readonly AchievementProperties _properties;

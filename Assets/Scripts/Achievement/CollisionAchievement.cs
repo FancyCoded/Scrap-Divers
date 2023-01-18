@@ -27,6 +27,9 @@
         if (_body == null)
             return false;
 
+        if(_body.IsAlive == false)
+            return false;
+
         if (_collisionType == CollisionType.Colliding)
             TryComplete(_body.CollidingsCount);
         if (_collisionType == CollisionType.Destruction)
