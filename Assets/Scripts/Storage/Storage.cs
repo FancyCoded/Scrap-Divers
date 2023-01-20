@@ -13,6 +13,7 @@ public class Storage
     protected const string BestFallingTimeKey = "BestFallingTime";
     protected const string GeneralAudioActivityKey = "AudioActivity";
     protected const string FirstLoad = "FirstLoad";
+    protected const string InterstitialAdViewedCountKey = "InterstitalAdViewedCount";
 
     private List<CheckPointProperty> _checkPointPropertiesDefault;
     private List<AchievementProperties> _achievementPropertiesDefault;
@@ -37,6 +38,7 @@ public class Storage
     public string Achievements => PlayerPrefs.GetString(AchievementsKey);
     public bool GenrealAudioAcitivity => Convert.ToBoolean(PlayerPrefs.GetInt(GeneralAudioActivityKey, 0));
     public bool IsFirstLoad => Convert.ToBoolean(PlayerPrefs.GetInt(FirstLoad, 1));
+    public uint InterstitialAdViewedCount => (uint)PlayerPrefs.GetInt(InterstitialAdViewedCountKey);
 
     public void Init(Wallet wallet, CheckPointMap checkPointMap, Score score, AchievementMap achievementMap,
         List<CheckPointProperty> checkPointPropertiesDefault, List<AchievementProperties> achievementPropertiesDefault,
@@ -133,5 +135,10 @@ public class Storage
     public void SaveBestFallingTime()
     {
         PlayerPrefs.SetInt(BestFallingTimeKey, (int)_score.FallingTimer.Time);
+    }
+
+    public void SetAdViewedCount(uint viewedCount)
+    {
+        PlayerPrefs.SetInt(InterstitialAdViewedCountKey, (int)viewedCount);
     }
 }

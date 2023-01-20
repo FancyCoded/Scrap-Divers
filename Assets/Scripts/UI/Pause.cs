@@ -34,17 +34,27 @@ public class Pause : MonoBehaviour
         _menu.onClick.RemoveListener(OnMenuButtonClicked);
     }
 
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+    }
+
     private void OnPauseButtonClicked()
     {
         _pauseWindow.gameObject.SetActive(true);
-        Time.timeScale = 0;
+        PauseGame();
         Paused?.Invoke();
     }
 
     private void OnResumeButtonClicked()
     {
         _pauseWindow.gameObject.SetActive(false);
-        Time.timeScale = 1;
+        ResumeGame();
         Resumed?.Invoke();
     }
 

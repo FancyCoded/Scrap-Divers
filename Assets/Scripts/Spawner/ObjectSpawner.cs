@@ -5,7 +5,7 @@ public class ObjectSpawner<T> : IObjectSpawner<T> where T : Component
 {
     public ObjectSpawner(Func<T> get, Action<T> actionOnSpawned)
     {
-        _get = get;
+        _get = get ?? throw new ArgumentNullException();
         ObjectSpawned = actionOnSpawned;
     }
 
@@ -22,6 +22,6 @@ public class ObjectSpawner<T> : IObjectSpawner<T> where T : Component
         if (parent)
             entity.transform.SetParent(parent);
 
-        ObjectSpawned(entity);
+        ObjectSpawned?.Invoke(entity);
     }
 }

@@ -8,6 +8,7 @@ public class Revival : MonoBehaviour
 {
     [SerializeField] private Button _forward;
     [SerializeField] private Button _revive;
+    [SerializeField] private Button _reviveAd;
     [SerializeField] private Result _result;
     [SerializeField] private Slider _countdownSlider;
     [SerializeField] private float _countdown;
@@ -16,6 +17,7 @@ public class Revival : MonoBehaviour
     [SerializeField] private ScoreView _scoreView;
     [SerializeField] private NutCountView _nutCountView;
     [SerializeField] private WalletView _walletView;
+    [SerializeField] private Ad _ad;
 
     private uint _reviveNumber = 0;
     private uint _reviveMaxCount = 3;
@@ -36,12 +38,14 @@ public class Revival : MonoBehaviour
     {
         _forward.onClick.AddListener(OnForwardButtonClicked);
         _revive.onClick.AddListener(OnReviveButtonClicked);
+        _reviveAd.onClick.AddListener(OnReviveAdButtonClicked);
     }
 
     private void OnDisable()
     {
         _forward.onClick.RemoveListener(OnForwardButtonClicked);
         _revive.onClick.RemoveListener(OnReviveButtonClicked);
+        _reviveAd.onClick.RemoveListener(OnReviveAdButtonClicked);
     }
 
     public void Display()
@@ -82,6 +86,22 @@ public class Revival : MonoBehaviour
         _nutCountView.Display();
 
         _wallet.Reduce(_revivePrice);
+
+        _reviveNumber++;
+        _revivePrice += _revivePriceIncrement;
+
+        ReviveButtonClicked?.Invoke();
+    }
+
+    private void OnReviveAdButtonClicked()
+    {
+        _ad.ShowVideoAd(OnVideoAdClosed);
+    }
+
+    private void OnVideoAdClosed(bool isRewarded)
+    {
+        _scoreView.Display();
+        _nutCountView.Display();
 
         _reviveNumber++;
         _revivePrice += _revivePriceIncrement;

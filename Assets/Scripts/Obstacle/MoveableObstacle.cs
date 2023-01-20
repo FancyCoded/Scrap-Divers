@@ -42,13 +42,13 @@ public class MoveableObstacle : MonoBehaviour, IResetable, IMoveable
     private IEnumerator MoveTo(Vector3 targetPosition)
     {
         WaitForSeconds cooldown = new WaitForSeconds(_cooldown);
-        float maxDelta = _speed * Time.deltaTime;
+        float maxDelta;
 
         while (true)
         {
-
             while (transform.localPosition != targetPosition)
             {
+                maxDelta = _speed * Time.deltaTime;
                 transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPosition, maxDelta);
                 yield return null;
             }
@@ -57,6 +57,7 @@ public class MoveableObstacle : MonoBehaviour, IResetable, IMoveable
 
             while (transform.localPosition != _startPosition)
             {
+                maxDelta = _speed * Time.deltaTime;
                 transform.localPosition = Vector3.MoveTowards(transform.localPosition, _startPosition, maxDelta);
                 yield return null;
             }

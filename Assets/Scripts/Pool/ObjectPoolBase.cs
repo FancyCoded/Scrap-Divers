@@ -15,7 +15,7 @@ public abstract class ObjectPoolBase<T> : IDisposable, IObjectPool<T> where T : 
 
     private List<T> _list;
 
-    protected ObjectPoolBase(Action<T> actionOnDestroyed,
+    protected ObjectPoolBase(Action<T> actionOnDestroyed = null,
        Action<T> actionOnGot = null,
        Action<T> actionOnReleased = null,
        uint defaultCapacity = DefaultCapacity,
@@ -49,8 +49,9 @@ public abstract class ObjectPoolBase<T> : IDisposable, IObjectPool<T> where T : 
 
     public void Dispose()
     {
-        foreach (T entity in _list)
-            Destroyed(entity);
+        if(Destroyed != null)
+            foreach (T entity in _list)
+                Destroyed(entity);
 
         _list.Clear();
         CountAll = 0;
@@ -65,8 +66,7 @@ public abstract class ObjectPoolBase<T> : IDisposable, IObjectPool<T> where T : 
 
         _list.Remove(entity);
 
-        if (Got != null)
-            Got(entity);
+        Got?.Invoke(entity);
 
         return entity;
     }
@@ -83,8 +83,7 @@ public abstract class ObjectPoolBase<T> : IDisposable, IObjectPool<T> where T : 
 
         _list.RemoveAt(randomIndex);
 
-        if (Got != null)
-            Got(entity);
+        Got?.Invoke(entity);
 
         return entity;
     }
@@ -106,13 +105,12 @@ public abstract class ObjectPoolBase<T> : IDisposable, IObjectPool<T> where T : 
 
     public void Release(T entity)
     {
-        if (Released != null)
-            Released(entity);
+        Released?.Invoke(entity);
 
         if (_list.Count < _maxSize)
             _list.Add(entity);
         else
-            Destroyed(entity);
+            Destroyed?.Invoke(entity);
 
         entity = null;
     }
