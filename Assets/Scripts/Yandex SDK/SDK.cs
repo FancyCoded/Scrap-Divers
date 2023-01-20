@@ -9,7 +9,6 @@ public class SDK : MonoBehaviour
 #if !UNITY_WEBGL || UNITY_EDITOR
         yield break;
 #endif
-
         DontDestroyOnLoad(gameObject);
 
         yield return YandexGamesSdk.Initialize();

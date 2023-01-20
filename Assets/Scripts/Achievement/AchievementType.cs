@@ -1,8 +1,8 @@
 ﻿public enum AchievementType
 {
-    Collect20Coin,
-    Collect60Coin,
-    Collect100Coin,
+    Collect20Gold,
+    Collect60Gold,
+    Collect100Gold,
     Collect3Fether,
     Collect3Magnet,
     Collect3Star,

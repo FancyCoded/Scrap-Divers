@@ -18,13 +18,13 @@
 
     public IAchievement CreateAchievement(AchievementProperties achievementProperties)
     {
-        if (achievementProperties.Type == AchievementType.Collect20Coin)
+        if (achievementProperties.Type == AchievementType.Collect20Gold)
             return new CollectItemAchievement(ItemType.Nut, _collector, achievementProperties, 20, MathCompareType.EqualMore);
 
-        if (achievementProperties.Type == AchievementType.Collect60Coin)
+        if (achievementProperties.Type == AchievementType.Collect60Gold)
             return new CollectItemAchievement(ItemType.Nut, _collector, achievementProperties, 60, MathCompareType.EqualMore);
 
-        if (achievementProperties.Type == AchievementType.Collect100Coin)
+        if (achievementProperties.Type == AchievementType.Collect100Gold)
             return new CollectItemAchievement(ItemType.Nut, _collector, achievementProperties, 100, MathCompareType.EqualMore);
 
         if (achievementProperties.Type == AchievementType.Collect3Fether)
