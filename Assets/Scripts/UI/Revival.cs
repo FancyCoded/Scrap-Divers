@@ -1,3 +1,4 @@
+using Agava.YandexGames;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 
 public class Revival : MonoBehaviour
 {
+    private const string LeaderBoardName = "LeaderBoard";
+
     [SerializeField] private Button _forward;
     [SerializeField] private Button _revive;
     [SerializeField] private Button _reviveAd;
@@ -55,13 +58,19 @@ public class Revival : MonoBehaviour
         gameObject.SetActive(true);
 
         if (_score.NutCount > _storage.BestCollectedNuts)
-            _storage.SaveBestCollectedNuts();
+            _storage.SetBestCollectedNuts();
 
         if (_score.Distance > _storage.BestDistance)
-            _storage.SaveBestDistance();
+        {
+            _storage.SetBestDistance();
 
+#if UNITY_WEBGL && !UNITY_EDITOR
+            Leaderboard.SetScore(LeaderBoardName, _storage.BestDistance);
+#endif
+        }
+        
         if (_score.FallingTimer.Time > _storage.BestFallingTime)
-            _storage.SaveBestFallingTime();
+            _storage.SetBestFallingTime();
 
         _wallet.Increase(_score.NutCount);
         _walletView.OnNutCountChanged(_wallet.NutCount);
@@ -76,7 +85,7 @@ public class Revival : MonoBehaviour
         _startCountDown = StartCountDown(_countdown);
         StartCoroutine(_startCountDown);
     }
-
+    
     private void OnReviveButtonClicked()
     {
         if (_wallet.NutCount < _revivePrice)

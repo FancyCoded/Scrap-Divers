@@ -21,12 +21,6 @@ public class Ad : MonoBehaviour
         return;
 #endif
 
-        if (YandexGamesSdk.IsInitialized == false)
-        {
-            _onInterstitialAdEnded?.Invoke();
-            return;
-        }
-
         InterstitialAd.Show(OnInterstitialAdOpened, OnInterstitialAdClosed, OnInterstitialAdError, OnInterstitialAdOffline);
     }
 
@@ -38,12 +32,6 @@ public class Ad : MonoBehaviour
         _onVideoAdEnded?.Invoke(_isRewarded);
         return;
 #endif
-        
-        if (YandexGamesSdk.IsInitialized == false)
-        {
-            _onVideoAdEnded?.Invoke(_isRewarded);
-            return;
-        }
 
         VideoAd.Show(OnVideoAdOpened, OnVideoAdRewarded, OnVideoAdClosed, VideoAdError);
     }

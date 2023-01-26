@@ -10,8 +10,10 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button _play;
     [SerializeField] private Button _checkPointMap;
     [SerializeField] private Button _achievementMap;
+    [SerializeField] private Button _leaderBoard;
     [SerializeField] private CheckPointMapView _checkPointMapView;
     [SerializeField] private AchievementWindow _achievementWindow;
+    [SerializeField] private LeaderBoardWindow _leaderBoardWindow;
     [SerializeField] private MenuStorageComposition _storageComposition;
     [SerializeField] private AudioSource _audio;
     [SerializeField] private GeneralAudioActivityToggler _generalAudio;
@@ -21,6 +23,7 @@ public class MainMenu : MonoBehaviour
         _play.onClick.AddListener(OnPlayButtonClicked);
         _achievementMap.onClick.AddListener(OnAchevementMapButtonClicked);
         _checkPointMap.onClick.AddListener(OnCheckPointMapButtonClicked);
+        _leaderBoard.onClick.AddListener(OnLeaderBoardButtonClicked);
         _generalAudio.Toggled += OnAudioAcitivityToggled;
     }
 
@@ -29,6 +32,7 @@ public class MainMenu : MonoBehaviour
         _play.onClick.RemoveListener(OnPlayButtonClicked);
         _checkPointMap.onClick.RemoveListener(OnCheckPointMapButtonClicked);
         _achievementMap.onClick.RemoveListener(OnAchevementMapButtonClicked);
+        _leaderBoard.onClick.RemoveListener(OnLeaderBoardButtonClicked);
         _generalAudio.Toggled -= OnAudioAcitivityToggled;
     }
 
@@ -46,6 +50,11 @@ public class MainMenu : MonoBehaviour
     private void OnCheckPointMapButtonClicked()
     {
         _checkPointMapView.Display();
+    }
+
+    private void OnLeaderBoardButtonClicked()
+    {
+        _leaderBoardWindow.Display();
     }
 
     private void OnAudioAcitivityToggled(bool isMuted)

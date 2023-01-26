@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324867ac266c13a46bf714f645d27ab0, type: 3}
   m_Name: FinishLevel1
   m_EditorClassIdentifier: 
-  _description: Pass level 1
+  _descriptionEn: Fly through the first level
+  _descriptionRu: "\u041F\u0440\u043E\u043B\u0435\u0442\u0438\u0442\u0435 \u0432\u0435\u0441\u044C
+    \u043F\u0435\u0440\u0432\u044B\u0439 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"
+  _descriptionTr: "T\xFCm seviye 1'de u\xE7un"
   _reward: 300
   _isCompleted: 0
   _isCollected: 0

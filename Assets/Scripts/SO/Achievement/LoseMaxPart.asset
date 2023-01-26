@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324867ac266c13a46bf714f645d27ab0, type: 3}
   m_Name: LoseMaxPart
   m_EditorClassIdentifier: 
-  _description: Lose part 8 times
+  _descriptionEn: Lose all limbs in one game
+  _descriptionRu: "\u041F\u043E\u0442\u0435\u0440\u044F\u0439\u0442\u0435 \u0432\u0441\u0435
+    \u043A\u043E\u043D\u0435\u0447\u043D\u043E\u0441\u0442\u0438 \u0437\u0430 \u043E\u0434\u043D\u0443
+    \u0438\u0433\u0440\u0443"
+  _descriptionTr: "Tek bir oyunda t\xFCm uzuvlar\u0131 kaybet"
   _reward: 300
   _isCompleted: 0
   _isCollected: 0

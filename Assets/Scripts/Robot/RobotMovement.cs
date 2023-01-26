@@ -20,7 +20,7 @@ public class RobotMovement : MonoBehaviour, IResetable
     [SerializeField] private ParticleSystem _featherEffect;
 
     private Vector3 _targetPosition;
-    private Vector3 _maxVelocityMagnitude = new Vector3(15, 15, 0);
+    private Vector3 _maxVelocityMagnitude = new Vector3(15, 0, 15);
     private Vector2 _horizontalPositionRange = new Vector2(-3.3f, -0.7f);
     private Vector2 _verticalPositionRange = new Vector2(-1.5f, 1.4f);
     private Vector2 _startPosition;
@@ -55,8 +55,6 @@ public class RobotMovement : MonoBehaviour, IResetable
             return;
 
         _input.Update();
-
-        //_rigidbody.velocity = Vector3.zero;
 
         Move();
 
@@ -95,10 +93,10 @@ public class RobotMovement : MonoBehaviour, IResetable
         _input = null;
     }
 
-    public void IncreaseSpeedAndVelocity()
+    public void ChangeSpeedAndVelocity()
     {
         float speedIncrement = 0.5f;
-        float velocityDecrement = -0.25f;
+        float velocityDecrement = -0.2f;
 
         _velocitySpeed += velocityDecrement;
         _speed += speedIncrement;

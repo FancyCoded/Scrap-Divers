@@ -5,8 +5,8 @@ public class BoughtCheckPoint : CheckPoint
 {
     [SerializeField] private Image _checkImage;
     [SerializeField] private Button _checkButton;
-    [SerializeField] private Color _checkedColor;
-    [SerializeField] private Color _uncheckedColor;
+    [SerializeField] private Sprite _checkedSprite;
+    [SerializeField] private Sprite _uncheckedSprite;
 
     private void OnEnable()
     {
@@ -30,13 +30,13 @@ public class BoughtCheckPoint : CheckPoint
 
     public void SetChecked()
     {
-        _checkButton.image.color = _checkedColor;
+        _checkButton.image.sprite = _checkedSprite;
         _checkImage.gameObject.SetActive(true);
     }
 
     public void UnSetChecked()
     {
-        _checkButton.image.color = _uncheckedColor;
+        _checkButton.image.sprite = _uncheckedSprite;
         _checkImage.gameObject.SetActive(false);
     }
 

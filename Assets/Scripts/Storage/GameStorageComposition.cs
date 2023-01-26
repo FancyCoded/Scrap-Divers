@@ -13,6 +13,7 @@ public class GameStorageComposition : StorageComposition, IResetable
     [SerializeField] private Collector _collector;
     [SerializeField] private ScoreView _scoreView;
     [SerializeField] private GeneralAudioActivityToggler _generalAudioActivityToggler;
+    [SerializeField] private Language _language;
 
     private readonly Wallet _wallet = new Wallet(0);
     private readonly CheckPointMap _checkPointMap = new CheckPointMap();
@@ -80,7 +81,8 @@ public class GameStorageComposition : StorageComposition, IResetable
 
     public override void Compose()
     {
-        Storage.Init(_wallet, _checkPointMap, _score, _achievementMap, _checkPointPropertiesDefault, _achievementPropertiesDefault, _generalAudioActivityToggler, _achievementFactory);
+        Storage.Init(_wallet, _checkPointMap, _score, _achievementMap, _checkPointPropertiesDefault, 
+            _achievementPropertiesDefault, _generalAudioActivityToggler, _achievementFactory, _language);
         Storage.Load();
 
         uint startPosition = Storage.CheckPointMap.CurrentCheckPointProperty.Distance * _levelConfig.LevelMeterFactor;

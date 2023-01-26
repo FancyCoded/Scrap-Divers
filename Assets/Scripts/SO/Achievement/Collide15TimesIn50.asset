@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324867ac266c13a46bf714f645d27ab0, type: 3}
   m_Name: Collide15TimesIn50
   m_EditorClassIdentifier: 
-  _description: Collide 15 times first 50 seconds
+  _descriptionEn: Collide 15 times with obstacles in the first 50 seconds of flying
+  _descriptionRu: "\u0421\u0442\u043E\u043B\u043A\u043D\u0438\u0442\u0435\u0441\u044C
+    15 \u0440\u0430\u0437 \u043E\u0431 \u043F\u0440\u0435\u043F\u044F\u0442\u0441\u0432\u0438\u044F
+    \u0437\u0430 \u043F\u0435\u0440\u0432\u044B\u0435 50 \u0441\u0435\u043A\u0443\u043D\u0434
+    \u043F\u0440\u043E\u043B\u0435\u0442\u0430"
+  _descriptionTr: "U\xE7u\u015Fun ilk 50 saniyesinde engellerle 15 kez \xE7arp\u0131\u015F\u0131n"
   _reward: 150
   _isCompleted: 0
   _isCollected: 0

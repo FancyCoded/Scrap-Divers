@@ -24,6 +24,7 @@ public class Storage
     private AchievementMap _achievementMap;
     private AchievementFactory _achievementFactory;
     private bool _isInited = false;
+    private Language _language;
 
     public CheckPointMap CheckPointMap => _checkPointMap;
     public Wallet Wallet => _wallet;
@@ -42,7 +43,7 @@ public class Storage
 
     public void Init(Wallet wallet, CheckPointMap checkPointMap, Score score, AchievementMap achievementMap,
         List<CheckPointProperty> checkPointPropertiesDefault, List<AchievementProperties> achievementPropertiesDefault,
-        GeneralAudioActivityToggler generalAudio, AchievementFactory achievementFactory)
+        GeneralAudioActivityToggler generalAudio, AchievementFactory achievementFactory, Language language)
     {
         _score = score;
         _wallet = wallet;
@@ -52,6 +53,7 @@ public class Storage
         _generalAudio = generalAudio;
         _achievementFactory = achievementFactory;
         _achievementMap = achievementMap;
+        _language = language;
 
         _isInited = true;
     }
@@ -78,6 +80,9 @@ public class Storage
 
         if (IsFirstLoad)
         {
+            for (int i = 0; i < _achievementPropertiesDefault.Count; i++)
+                _language.LanguageChanged += _achievementPropertiesDefault[i].OnLanguageChanged;
+
             _checkPointMap.Init(_checkPointPropertiesDefault, _wallet, this);
             _achievementMap.Init(_achievementPropertiesDefault, _wallet, _achievementFactory);
 
@@ -90,17 +95,15 @@ public class Storage
         _checkPointMap.Init(checkPointProperties, _wallet, this);
 
         List<AchievementProperties> achievementProperties = JsonConvert.DeserializeObject<List<AchievementProperties>>(Achievements);
+
+        for (int i = 0; i < achievementProperties.Count; i++)
+            _language.LanguageChanged += achievementProperties[i].OnLanguageChanged;
+
         _achievementMap.Init(achievementProperties, _wallet, _achievementFactory);
     }
 
     public void ResetState()
     {
-        string output = JsonConvert.SerializeObject(_checkPointPropertiesDefault);
-        PlayerPrefs.SetString(CheckPointsKey, output);
-
-        output = JsonConvert.SerializeObject(_achievementPropertiesDefault);
-        PlayerPrefs.SetString(Achievements, output);
-
         PlayerPrefs.SetInt(NutCountKey, 0);
         PlayerPrefs.SetInt(BestDistanceKey, 0);
         PlayerPrefs.SetInt(BestCollectedNutsKey, 0);
@@ -122,17 +125,17 @@ public class Storage
         PlayerPrefs.SetInt(FirstLoad, 1);
     }
 
-    public void SaveBestDistance()
+    public void SetBestDistance()
     {
         PlayerPrefs.SetInt(BestDistanceKey, (int)_score.Distance);
     }
 
-    public void SaveBestCollectedNuts()
+    public void SetBestCollectedNuts()
     {
         PlayerPrefs.SetInt(BestCollectedNutsKey, (int)_score.NutCount);
     }
 
-    public void SaveBestFallingTime()
+    public void SetBestFallingTime()
     {
         PlayerPrefs.SetInt(BestFallingTimeKey, (int)_score.FallingTimer.Time);
     }

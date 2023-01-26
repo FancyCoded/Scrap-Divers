@@ -12,6 +12,13 @@ public abstract class AchievementView : MonoBehaviour
     public virtual void Init(IReadonlyAchievementProperty achievementProperty)
     {
         _achievementProperty = achievementProperty;
-        _description.text = _achievementProperty.Description.ToString();
+        _description.text = _achievementProperty.CurrentDescription;
+
+        achievementProperty.DescriptionChanged += OnDescrtiptionChanged;
+    }
+
+    private void OnDescrtiptionChanged()
+    {
+        _description.text = _achievementProperty.CurrentDescription;
     }
 }

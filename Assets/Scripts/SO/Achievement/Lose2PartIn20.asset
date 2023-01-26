@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324867ac266c13a46bf714f645d27ab0, type: 3}
   m_Name: Lose2PartIn20
   m_EditorClassIdentifier: 
-  _description: Lose 2 parts first 20 seconds
+  _descriptionEn: Lose 2 body parts in the first 20 seconds of the game
+  _descriptionRu: "\u0417\u0430 \u043F\u0435\u0440\u0432\u044B\u0435 20 \u0441\u0435\u043A\u0443\u043D\u0434
+    \u0438\u0433\u0440\u044B \u043F\u043E\u0442\u0435\u0440\u044F\u0439\u0442\u0435
+    2 \u0447\u0430\u0441\u0442\u0438 \u0442\u0435\u043B\u0430"
+  _descriptionTr: "Oyunun ilk 20 saniyesinde 2 v\xFCcut par\xE7as\u0131n\u0131 kaybedin"
   _reward: 150
   _isCompleted: 0
   _isCollected: 0

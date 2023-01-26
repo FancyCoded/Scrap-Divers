@@ -9,6 +9,7 @@ public class MenuStorageComposition : StorageComposition, IResetable
     [SerializeField] private AchievementWindow _achievementWindow;
     [SerializeField] private WalletView _walletView;
     [SerializeField] private GeneralAudioActivityToggler _generalAudioActivityToggler;
+    [SerializeField] private Language _language;
 
     private readonly AchievementMap _achievementMap = new AchievementMap();
     private readonly AchievementFactory _achievementFactory = new AchievementFactory();
@@ -55,7 +56,8 @@ public class MenuStorageComposition : StorageComposition, IResetable
 
     public override void Compose()
     {
-        Storage.Init(_wallet, _checkPointMap, _score, _achievementMap, _checkPointPropertiesDefault, _achievementPropertiesDefault, _generalAudioActivityToggler, _achievementFactory);
+        Storage.Init(_wallet, _checkPointMap, _score, _achievementMap, _checkPointPropertiesDefault,
+            _achievementPropertiesDefault, _generalAudioActivityToggler, _achievementFactory, _language);
         Storage.Load();
         Storage.Save();
     }
@@ -74,6 +76,7 @@ public class MenuStorageComposition : StorageComposition, IResetable
     {
         ResetState();
         Storage.Load();
+        _language.Set("ru");
     }
 
     [ContextMenu("Save")]

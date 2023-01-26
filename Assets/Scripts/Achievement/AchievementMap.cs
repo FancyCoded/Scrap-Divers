@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AchievementMap : IResetable
@@ -42,6 +41,7 @@ public class AchievementMap : IResetable
         _achievementPropertiesPair.Clear();
         _achievements.Clear();
         _wallet = null;
+        _achievementFactory = null;
     }
 
     public void CompleteAchievement(IReadonlyAchievementProperty achievementProperty)

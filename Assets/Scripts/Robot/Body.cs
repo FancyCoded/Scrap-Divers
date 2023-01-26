@@ -75,7 +75,7 @@ public class Body : MonoBehaviour, IRepairable
 
     private void OnPartDestructed(Part part)
     {
-        int emissionFactor = 5;
+        int emissionFactor = 2;
 
         if (part.PartType == PartType.Trunk)
             Die();
@@ -83,6 +83,6 @@ public class Body : MonoBehaviour, IRepairable
         DestructedPartCount++;
         _emission.rateOverTime = DestructedPartCount * emissionFactor;
 
-        _robotMovement.IncreaseSpeedAndVelocity();
+        _robotMovement.ChangeSpeedAndVelocity();
     }
 }

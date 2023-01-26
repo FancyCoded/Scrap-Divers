@@ -36,11 +36,11 @@ public class Result : MonoBehaviour
         gameObject.SetActive(true);
 
         _collectedNutsText.text = $"{_storage.Score.NutCount}";
-        _bestCollectedNutsText.text = $"best: {_storage.BestCollectedNuts}";
+        _bestCollectedNutsText.text = $"{_storage.BestCollectedNuts}";
         _distanceText.text = $"{_storage.Score.Distance}m";
-        _bestDistanceText.text = $"best: {_storage.BestDistance}m";
+        _bestDistanceText.text = $"{_storage.BestDistance}m";
         _fallingTime.text = $"{_storage.Score.FallingTimer.Time}s";
-        _bestFallingTime.text = $"best: {_storage.BestFallingTime}s";
+        _bestFallingTime.text = $"{_storage.BestFallingTime}s";
     }
 
     private void OnMenuButtonClicked()

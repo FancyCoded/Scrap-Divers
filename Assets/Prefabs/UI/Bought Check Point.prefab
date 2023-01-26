@@ -130,8 +130,8 @@ MonoBehaviour:
   _distance: {fileID: 3440345554525913945}
   _checkImage: {fileID: 3440345553112562236}
   _checkButton: {fileID: 3440345554215507888}
-  _checkedColor: {r: 0.39607844, g: 0.83137256, b: 0.3882353, a: 1}
-  _uncheckedColor: {r: 1, g: 0.36320752, b: 0.36320752, a: 1}
+  _checkedSprite: {fileID: 21300000, guid: ccca3a10c39d04c6c9a0e6a35e048bbb, type: 3}
+  _uncheckedSprite: {fileID: 21300000, guid: 79be0ebb2700b48e7a8792238a8934ef, type: 3}
 --- !u!1 &3440345554215507890
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,14 +193,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3962477, g: 0.8301887, b: 0.38768244, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: ccca3a10c39d04c6c9a0e6a35e048bbb, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

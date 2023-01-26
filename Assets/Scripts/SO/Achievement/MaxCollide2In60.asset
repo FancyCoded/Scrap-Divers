@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324867ac266c13a46bf714f645d27ab0, type: 3}
   m_Name: MaxCollide2In60
   m_EditorClassIdentifier: 
-  _description: Max collide 2 first 60 seconds
+  _descriptionEn: Fly 60 seconds with no more than two body part hitting an obstacle
+  _descriptionRu: "\u041F\u0440\u043E\u043B\u0435\u0442\u0438\u0442\u0435 60 \u0441\u0435\u043A\u0443\u043D\u0434
+    \u0441\u0442\u0430\u043B\u043A\u0438\u0432\u0430\u044F\u0441\u044C \u043D\u0435
+    \u0431\u043E\u043B\u044C\u0448\u0435 \u0434\u0432\u0443\u0445 \u0447\u0430\u0441\u0442\u0435\u0439
+    \u0442\u0435\u043B\u0430 \u0441 \u043F\u0440\u0435\u043F\u044F\u0442\u0441\u0432\u0438\u0435\u043C"
+  _descriptionTr: "En fazla 2 daha fazla de\u011Fil \xE7arp\u0131\u015Fma ile 60
+    saniye u\xE7un v\xFCcut par\xE7alar\u0131"
   _reward: 250
   _isCompleted: 0
   _isCollected: 0
