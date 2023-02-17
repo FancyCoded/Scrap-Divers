@@ -6,7 +6,7 @@ public class ObstaclePool : MonoBehaviour, IDisposable
 {
     [SerializeField] private Transform _container;
 
-    private ObjectPool<Obstacle> _pool;
+    private IObjectPool<Obstacle> _pool;
     private LevelProperties _levelProperties;
 
     private Obstacle[] _templates => _levelProperties.Obstacles;
@@ -29,7 +29,11 @@ public class ObstaclePool : MonoBehaviour, IDisposable
 
     public void Release(Obstacle obstacle) => _pool?.Release(obstacle);
 
-    public void Dispose() => _pool?.Dispose();
+    public void Dispose()
+    {
+        if (_pool is IDisposable disposable)
+            disposable?.Dispose();
+    }
 
     private Obstacle CreateNew()
     {

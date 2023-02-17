@@ -1,3 +1,5 @@
+#pragma warning disable
+
 using UnityEngine;
 using Agava.YandexGames;
 using System;

@@ -11,7 +11,7 @@ public class ObstacleSpawner : MonoBehaviour, IDisposable
 
     private ObstaclePreparer _obstaclePreparer;
     private LevelProperties _levelProperties;
-    private ObjectSpawner<Obstacle> _spawner;
+    private IObjectSpawner<Obstacle> _spawner;
 
     public void Init(LevelProperties levelProperties)
     {

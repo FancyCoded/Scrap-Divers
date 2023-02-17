@@ -10,5 +10,6 @@ public interface IObjectPool<T> where T : Component
     int CountInactive { get; }
 
     T Get();
+    T GetRandom();
     void Release(T entity);
 }

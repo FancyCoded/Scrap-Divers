@@ -1,18 +1,18 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 
 public class PlayerInputRouter
 {
     private const int MaxDeltaMagnitude = 1;
-    private const int TouchScreenSize = 150;
+    private const int TouchScreenSize = 100;
 
     private readonly PlayerInput _input;
 
     private bool _isTouchScreen = false;
     private Vector2 _startPosition = Vector2.zero;
-
 
     public PlayerInputRouter()
     {

@@ -42,7 +42,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""name"": ""2D Vector"",
                     ""id"": ""7c014b21-af1e-43c0-bb3f-5b959c0fedd4"",
                     ""path"": ""2DVector"",
-                    ""interactions"": ""Press"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
@@ -527,7 +527,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -546,7 +546,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4b62359a-8f79-4ccf-ace2-509037bf5835"",
-                    ""path"": ""<Touchscreen>/touch*/press"",
+                    ""path"": ""<Touchscreen>/touch*/Press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Touch;Touchscreen"",

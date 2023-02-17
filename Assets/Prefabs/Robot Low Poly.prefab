@@ -280,7 +280,6 @@ GameObject:
   - component: {fileID: 294994280983236014}
   - component: {fileID: 294994280983236000}
   - component: {fileID: 294994280983236015}
-  - component: {fileID: 294994280983236001}
   m_Layer: 7
   m_Name: Robot Low Poly
   m_TagString: Untagged
@@ -323,16 +322,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b974628652a0541b15f2e56b5fe43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultSpeed: 30
+  _defaultSpeed: 32
   _defaultVelocitySpeed: 5
   _speed: 0
-  _velocitySpeed: 5
+  _velocitySpeed: 0
   _lerpMaxDelta: 0.3
   _rayCastDistance: 10
   _rigidbody: {fileID: 8969862115628017626}
   _portal: {fileID: 0}
   _level: {fileID: 0}
   _featherEffect: {fileID: 637662240431839987}
+  _spawnOffsetZ: 10
 --- !u!114 &294994280983236000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,36 +361,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxDeltaOfGrowth: 0.01
   _maxDeltaOfDecline: 0.005
---- !u!114 &294994280983236001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294994280983236013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 627de0aeadb204e468822bfc3859f817, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Touchscreen
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &369059899810926060
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +566,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a24e2ffbf859dff47b45b0cbcea8442c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nutCount: 0
   _rigidbody: {fileID: 8969862115628017626}
   _buffApplyer: {fileID: 637662238919413138}
   _boxCastDistance: 1
@@ -1021,8 +990,8 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
 --- !u!4 &637662240039684879
 Transform:
   m_ObjectHideFlags: 0
@@ -1031,8 +1000,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637662240039684878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 150}
+  m_LocalScale: {x: 8, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1104462800752170775}
@@ -1853,10 +1822,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.025251327
+  m_Radius: 0.025
   m_Height: 0.16791932
   m_Direction: 1
-  m_Center: {x: 0, y: 0.08395966, z: 1.3491593e-10}
+  m_Center: {x: 0, y: 0.08396001, z: 0}
 --- !u!54 &5558840714965978558
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2901,9 +2870,9 @@ CharacterJoint:
   m_ConnectedBody: {fileID: 8969862115628017626}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: -1, y: 0, z: 0}
+  m_Axis: {x: -1, y: -0.35, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0.035135392, y: -0.018092243, z: 0.00032710927}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2921,7 +2890,7 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 25
+    limit: 15
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -4136,7 +4105,7 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 16.673141
+    limit: 15
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -4284,9 +4253,9 @@ CharacterJoint:
   m_ConnectedBody: {fileID: 8969862115628017626}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 0, y: 0, z: 0}
+  m_Axis: {x: -1, y: 0.35, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -0.035135504, y: -0.018092249, z: 0.000054299984}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -4304,7 +4273,7 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 25
+    limit: 15
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -4384,7 +4353,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7311731139450367130}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.036686495
@@ -4531,10 +4500,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.025603006
+  m_Radius: 0.025
   m_Height: 0.1684167
   m_Direction: 1
-  m_Center: {x: 0, y: 0.08420812, z: -2.9888156e-10}
+  m_Center: {x: 0, y: 0.084207945, z: 0}
 --- !u!54 &7559117541709694608
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6091,7 +6060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19839586, guid: 5f3df74fe190ff84f8893b1bbb6cb3b6, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19839586, guid: 5f3df74fe190ff84f8893b1bbb6cb3b6, type: 3}
       propertyPath: InitialModule.startLifetime.scalar

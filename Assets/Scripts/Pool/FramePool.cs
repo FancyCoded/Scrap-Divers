@@ -5,7 +5,7 @@ public class FramePool : MonoBehaviour, IDisposable
 {
     [SerializeField] private Transform _container;
 
-    private ObjectPool<Frame> _pool;
+    private IObjectPool<Frame> _pool;
     private LevelProperties _levelProperties;
 
     private Frame _template => _levelProperties.Frame;
@@ -29,7 +29,11 @@ public class FramePool : MonoBehaviour, IDisposable
 
     private Frame CreateNew() => Instantiate(_template, _container);
 
-    public void Dispose() => _pool?.Dispose();
+    public void Dispose()
+    {
+        if(_pool is IDisposable disposable)
+            disposable?.Dispose();
+    }
 
     private void OnReleased(Frame frame) => frame.gameObject.SetActive(false);
 

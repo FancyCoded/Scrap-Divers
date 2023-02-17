@@ -10,7 +10,7 @@ public class FrameSpawner : MonoBehaviour, IDisposable
 
     [SerializeField] private FramePool _framePool;
 
-    private ObjectSpawner<Frame> _spawner;
+    private IObjectSpawner<Frame> _spawner;
     private Vector3 _frameSpawnStartPosition;
 
     public IReadOnlyCollection<Frame> SpawnedFrames => _spawnedFrames;

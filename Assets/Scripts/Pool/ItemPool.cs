@@ -10,11 +10,11 @@ public class ItemPool : MonoBehaviour
     private readonly Dictionary<ItemType, Item> _items = new Dictionary<ItemType, Item>();
     private readonly List<Item> _buffs = new List<Item>();
 
-    private ObjectPool<Magnet> _magnetPool;
-    private ObjectPool<Nut> _nutPool;
-    private ObjectPool<Feather> _featherPool;
-    private ObjectPool<Star> _starPool;
-    private ObjectPool<Wrench> _wrenchPool;
+    private IObjectPool<Magnet> _magnetPool;
+    private IObjectPool<Nut> _nutPool;
+    private IObjectPool<Feather> _featherPool;
+    private IObjectPool<Star> _starPool;
+    private IObjectPool<Wrench> _wrenchPool;
 
     public Nut Nut => (Nut)_items[ItemType.Nut];
     public List<Item> Buffs => _buffs;

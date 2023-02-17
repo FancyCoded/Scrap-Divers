@@ -6,7 +6,7 @@ public class RobotMovement : MonoBehaviour, IResetable
 {
     private const float DefaultSpeed = 30;
     private const float DefaultVelocitySpeed = 5;
-    private const int MaxVelocityMagnnitude = 15;
+    private const int MaxVelocityMagnitude = 15;
 
     [SerializeField] private float _defaultSpeed = DefaultSpeed;
     [SerializeField] private float _defaultVelocitySpeed = DefaultVelocitySpeed;
@@ -18,9 +18,9 @@ public class RobotMovement : MonoBehaviour, IResetable
     [SerializeField] private Portal _portal;
     [SerializeField] private Level _level;
     [SerializeField] private ParticleSystem _featherEffect;
+    [SerializeField] private int _spawnOffsetZ = 10;
 
     private Vector3 _targetPosition;
-    private Vector3 _maxVelocityMagnitude = new Vector3(15, 0, 15);
     private Vector2 _horizontalPositionRange = new Vector2(-3.3f, -0.7f);
     private Vector2 _verticalPositionRange = new Vector2(-1.5f, 1.4f);
     private Vector2 _startPosition;
@@ -80,7 +80,7 @@ public class RobotMovement : MonoBehaviour, IResetable
 
         _input = input;
         _levelProperites = levelProperites;
-        transform.position = new Vector3(transform.position.x, transform.position.y, startPositionZ);
+        transform.position = new Vector3(transform.position.x, transform.position.y, startPositionZ + _spawnOffsetZ);
         _startPosition = _rigidbody.transform.position;
     }
 
@@ -137,10 +137,10 @@ public class RobotMovement : MonoBehaviour, IResetable
         if (_recordVelocity == false)
             return;
 
-        _rigidbody.velocity = new Vector3(_input.Movement.x * _velocitySpeed, _input.Movement.y * _velocitySpeed);
-
-        if (_rigidbody.velocity.magnitude > MaxVelocityMagnnitude)
-            _rigidbody.velocity = _maxVelocityMagnitude;
+        _rigidbody.velocity = new Vector3(
+            Mathf.Clamp(_input.Movement.x * _velocitySpeed, -MaxVelocityMagnitude, MaxVelocityMagnitude),
+            Mathf.Clamp(_input.Movement.y * _velocitySpeed, -MaxVelocityMagnitude, MaxVelocityMagnitude), 
+            _rigidbody.velocity.z);
 
         _rigidbody.transform.position = new Vector3(
             Mathf.Clamp(_rigidbody.transform.position.x, _horizontalPositionRange.x, _horizontalPositionRange.y),

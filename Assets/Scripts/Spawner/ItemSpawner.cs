@@ -9,11 +9,11 @@ public class ItemSpawner : MonoBehaviour
 
     private bool _isInited = false;
 
-    private ObjectSpawner<Magnet> _magnetSpawner;
-    private ObjectSpawner<Nut> _nutSpawner;
-    private ObjectSpawner<Wrench> _wrenchSpawner;
-    private ObjectSpawner<Star> _starSpawner;
-    private ObjectSpawner<Feather> _featherSpawner;
+    private IObjectSpawner<Magnet> _magnetSpawner;
+    private IObjectSpawner<Nut> _nutSpawner;
+    private IObjectSpawner<Wrench> _wrenchSpawner;
+    private IObjectSpawner<Star> _starSpawner;
+    private IObjectSpawner<Feather> _featherSpawner;
 
     public Nut Nut => _itemPool.Nut;
     public List<Item> Buffs => _itemPool.Buffs;
