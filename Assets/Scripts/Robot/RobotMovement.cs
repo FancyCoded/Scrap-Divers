@@ -1,12 +1,14 @@
 using System.Collections;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class RobotMovement : MonoBehaviour, IResetable
 {
     private const float DefaultSpeed = 30;
     private const float DefaultVelocitySpeed = 5;
-    private const int MaxVelocityMagnitude = 15;
+    private const int MaxVelocityMagnitude = 10;
 
     [SerializeField] private float _defaultSpeed = DefaultSpeed;
     [SerializeField] private float _defaultVelocitySpeed = DefaultVelocitySpeed;
@@ -37,10 +39,14 @@ public class RobotMovement : MonoBehaviour, IResetable
     public event UnityAction Stopped;
     public event UnityAction<float> SpeedChanged;
 
+    private void Awake()
+    {
+        _input = new PlayerInputRouter();
+    }
+
     private void OnEnable()
     {
         _portal.PortalReached += OnPortalReached;
-        _input = new PlayerInputRouter();
         _input.Enable();
     }
 
@@ -93,12 +99,9 @@ public class RobotMovement : MonoBehaviour, IResetable
         _input = null;
     }
 
-    public void ChangeSpeedAndVelocity()
+    public void ChangeSpeed()
     {
         float speedIncrement = 0.5f;
-        float velocityDecrement = -0.2f;
-
-        _velocitySpeed += velocityDecrement;
         _speed += speedIncrement;
 
         SpeedChanged?.Invoke(_speed);
@@ -138,9 +141,9 @@ public class RobotMovement : MonoBehaviour, IResetable
             return;
 
         _rigidbody.velocity = new Vector3(
-            Mathf.Clamp(_input.Movement.x * _velocitySpeed, -MaxVelocityMagnitude, MaxVelocityMagnitude),
-            Mathf.Clamp(_input.Movement.y * _velocitySpeed, -MaxVelocityMagnitude, MaxVelocityMagnitude), 
-            _rigidbody.velocity.z);
+        Mathf.Clamp(_input.Movement.x * _velocitySpeed, -MaxVelocityMagnitude, MaxVelocityMagnitude),
+        Mathf.Clamp(_input.Movement.y * _velocitySpeed, -MaxVelocityMagnitude, MaxVelocityMagnitude),
+        _rigidbody.velocity.z);
 
         _rigidbody.transform.position = new Vector3(
             Mathf.Clamp(_rigidbody.transform.position.x, _horizontalPositionRange.x, _horizontalPositionRange.y),

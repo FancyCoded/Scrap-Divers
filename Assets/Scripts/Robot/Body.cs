@@ -83,6 +83,6 @@ public class Body : MonoBehaviour, IRepairable
         DestructedPartCount++;
         _emission.rateOverTime = DestructedPartCount * emissionFactor;
 
-        _robotMovement.ChangeSpeedAndVelocity();
+        _robotMovement.ChangeSpeed();
     }
 }
